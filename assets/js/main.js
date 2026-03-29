@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderHero(config.hero);
   renderStats(config.stats);
   renderAbout(config.about);  renderSkills(config.skills);
-  renderLatestProject(config.latestProject);
+  renderHighlights(config.highlights);
   renderProjectCategories(config.projectCategories);
   renderTimeline(config.timeline);
   renderFooter(config.site, config.socials);
@@ -186,76 +186,87 @@ function renderSkillsPage(animate = true, direction = 'next') {
 
 // --- Latest Project (Featured) ---
 
-function renderLatestProject(project) {
+function renderHighlights(projects) {
   const container = document.getElementById('latestProject');
-  if (!container || !project) return;
+  if (!container || !projects || !projects.length) return;
 
-  const hasVideo = project.video && project.video.trim() !== '';
-  const isLocal = hasVideo && !project.video.includes('youtube.com');
+  container.innerHTML = projects.map((project, i) => {
+    const hasVideo = project.video && project.video.trim() !== '';
+    const isLocal = hasVideo && !project.video.includes('youtube.com');
+    const reverse = i % 2 === 1 ? ' flex-row-reverse' : '';
 
-  container.innerHTML = `
-    <div class="row align-items-center g-4">
-      <div class="col-lg-7">
-        <div class="latest-project-media ratio ratio-16x9" style="overflow: hidden; border-radius: 4px; border: 2px solid var(--color-primary); box-shadow: var(--glow-primary);">
-          ${project.image
-            ? `<img src="${project.image}" alt="${project.title}" class="latest-thumb" style="object-fit: cover;">`
-            : `<div class="d-flex align-items-center justify-content-center bg-dark latest-thumb">
-                <i class="bi bi-controller text-primary" style="font-size: 4rem;"></i>
-              </div>`}
-          ${hasVideo && isLocal ? `
-            <div class="video-preview" style="position:absolute;inset:0;">
-              <video src="${project.video}" muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
-            </div>
-          ` : ''}
-          ${hasVideo && !isLocal ? `
-            <div class="video-preview" style="position:absolute;inset:0;">
-              <iframe data-src="${project.video}" style="width:100%;height:100%;border:none;" allow="autoplay"></iframe>
-            </div>
-          ` : ''}
+    return `
+      <div class="highlight-item row align-items-center g-4 mb-5${reverse}" data-index="${i}">
+        <div class="col-lg-7">
+          <div class="latest-project-media ratio ratio-16x9" style="overflow: hidden; border-radius: 4px; border: 2px solid var(--color-primary); box-shadow: var(--glow-primary);">
+            ${project.image
+              ? `<img src="${project.image}" alt="${project.title}" class="latest-thumb" style="object-fit: cover;">`
+              : `<div class="d-flex align-items-center justify-content-center bg-dark latest-thumb">
+                  <i class="bi bi-controller text-primary" style="font-size: 4rem;"></i>
+                </div>`}
+            ${hasVideo && isLocal ? `
+              <div class="video-preview" style="position:absolute;inset:0;">
+                <video src="${project.video}" muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+              </div>
+            ` : ''}
+            ${hasVideo && !isLocal ? `
+              <div class="video-preview" style="position:absolute;inset:0;">
+                <iframe data-src="${project.video}" style="width:100%;height:100%;border:none;" allow="autoplay"></iframe>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <h3 style="font-size: 0.9rem; color: var(--color-primary); text-shadow: var(--glow-primary);">${project.title}</h3>
+          <p class="mt-3 latest-project-desc">${project.desc}</p>
+          <div class="d-flex gap-3 flex-wrap mt-3">
+            ${project.playable && project.playableFile ? `<button class="btn btn-sm btn-outline-warning btn-play-now"><i class="bi bi-play-fill"></i> Play Now</button>` : ''}
+            <button class="btn btn-sm btn-outline-primary btn-detail btn-latest-detail">Detail</button>
+          </div>
         </div>
       </div>
-      <div class="col-lg-5">
-        <span class="badge bg-primary text-dark mb-3" style="font-family: var(--font-pixel); font-size: 0.5rem;">LATEST PROJECT</span>
-        <h3 style="font-size: 0.9rem; color: var(--color-primary); text-shadow: var(--glow-primary);">${project.title}</h3>
-        <p class="mt-3 latest-project-desc">${project.desc}</p>
-        <div class="d-flex gap-2 flex-wrap mt-3">
-          ${project.playStore ? `<a href="${project.playStore}" target="_blank" class="btn btn-sm btn-outline-success"><i class="bi bi-google-play"></i> Google Play</a>` : ''}
-          ${project.appStore ? `<a href="${project.appStore}" target="_blank" class="btn btn-sm btn-outline-light"><i class="bi bi-apple"></i> App Store</a>` : ''}
-          <button class="btn btn-sm btn-outline-primary btn-detail btn-latest-detail">Detail</button>
-        </div>
-      </div>
-    </div>
-  `;
+    `;
+  }).join('');
 
-  // Hover play for local video
-  const video = container.querySelector('.latest-project-media video');
-  const media = container.querySelector('.latest-project-media');
-  const preview = container.querySelector('.latest-project-media .video-preview');
+  // Bind events for each highlight item
+  container.querySelectorAll('.highlight-item').forEach((item) => {
+    const idx = parseInt(item.dataset.index);
+    const project = projects[idx];
 
-  if (media && preview) {
-    media.addEventListener('mouseenter', () => {
-      if (video) { video.currentTime = 0; video.play(); }
-      const iframe = preview.querySelector('iframe[data-src]');
-      if (iframe) {
-        const sep = iframe.dataset.src.includes('?') ? '&' : '?';
-        iframe.src = iframe.dataset.src + sep + 'autoplay=1&mute=1';
-      }
-      requestAnimationFrame(() => preview.classList.add('active'));
+    // Hover play for local video
+    const video = item.querySelector('.latest-project-media video');
+    const media = item.querySelector('.latest-project-media');
+    const preview = item.querySelector('.latest-project-media .video-preview');
+
+    if (media && preview) {
+      media.addEventListener('mouseenter', () => {
+        if (video) { video.currentTime = 0; video.play(); }
+        const iframe = preview.querySelector('iframe[data-src]');
+        if (iframe) {
+          const sep = iframe.dataset.src.includes('?') ? '&' : '?';
+          iframe.src = iframe.dataset.src + sep + 'autoplay=1&mute=1';
+        }
+        requestAnimationFrame(() => preview.classList.add('active'));
+      });
+
+      media.addEventListener('mouseleave', () => {
+        preview.classList.remove('active');
+        if (video) video.pause();
+        const iframe = preview.querySelector('iframe');
+        if (iframe) iframe.src = '';
+      });
+    }
+
+    item.querySelector('.btn-latest-detail')?.addEventListener('click', () => {
+      showProjectModal(project);
     });
 
-    media.addEventListener('mouseleave', () => {
-      preview.classList.remove('active');
-      if (video) video.pause();
-      const iframe = preview.querySelector('iframe');
-      if (iframe) iframe.src = '';
+    item.querySelector('.btn-play-now')?.addEventListener('click', () => {
+      openPlayable(project);
     });
-  }
-
-  // Detail button
-  container.querySelector('.btn-latest-detail')?.addEventListener('click', () => {
-    showProjectModal(project);
   });
 }
+
 
 // --- Project Categories with Pagination ---
 
@@ -311,9 +322,12 @@ function renderProjectPage(cat, animate = true, direction = 'next') {
             <h5 class="card-title mb-0">${p.title}</h5>
             ${p.tech && p.tech.length ? `<div class="tech-tags mt-1">${p.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>` : ''}
           </div>
-          <button class="btn btn-sm btn-outline-primary btn-detail" data-cat="${cat.id}" data-idx="${idx}">
-            Detail
-          </button>
+          <div class="d-flex gap-2">
+            ${p.playable && p.playableFile ? `<button class="btn btn-sm btn-play-now" data-cat="${cat.id}" data-idx="${idx}"><i class="bi bi-play-fill"></i> Play</button>` : ''}
+            <button class="btn btn-sm btn-outline-primary btn-detail" data-cat="${cat.id}" data-idx="${idx}">
+              Detail
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -357,6 +371,16 @@ function renderProjectPage(cat, animate = true, direction = 'next') {
         const idx = parseInt(btn.dataset.idx);
         const category = allCategories.find((c) => c.id === catId);
         if (category) showProjectModal(category.projects[idx]);
+      });
+    });
+
+    // Bind play now buttons
+    grid.querySelectorAll('.btn-play-now').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const catId = btn.dataset.cat;
+        const idx = parseInt(btn.dataset.idx);
+        const category = allCategories.find((c) => c.id === catId);
+        if (category) openPlayable(category.projects[idx]);
       });
     });
   };
@@ -447,19 +471,19 @@ function showProjectModal(project) {
   // Store links
   const links = [];
   if (project.playStore) {
-    links.push(`<a href="${project.playStore}" target="_blank" class="btn btn-outline-success">
+    links.push(`<a href="${project.playStore}" target="_blank" class="btn btn-outline-gplay">
       <i class="bi bi-google-play"></i> Google Play
     </a>`);
   }
   if (project.appStore) {
-    links.push(`<a href="${project.appStore}" target="_blank" class="btn btn-outline-dark">
+    links.push(`<a href="${project.appStore}" target="_blank" class="btn btn-outline-light">
       <i class="bi bi-apple"></i> App Store
     </a>`);
   }
-  if (project.playableUrl) {
-    links.push(`<a href="${project.playableUrl}" target="_blank" class="btn btn-outline-warning">
-      <i class="bi bi-play-circle"></i> Play Demo
-    </a>`);
+  if (project.playable && project.playableFile) {
+    links.push(`<button class="btn btn-outline-warning btn-play-modal" onclick="closeModalAndPlay(this)" data-file="${project.playableFile}" data-title="${project.title}">
+      <i class="bi bi-play-fill"></i> Play Now
+    </button>`);
   }
   if (links.length) {
     body += `<div class="d-flex gap-2 flex-wrap mt-3">${links.join('')}</div>`;
@@ -665,6 +689,70 @@ function initParticles() {
   animate();
 }
 
+
+// --- Playable Overlay ---
+
+function closeModalAndPlay(btn) {
+  const file = btn.dataset.file;
+  const title = btn.dataset.title;
+  const modal = bootstrap.Modal.getInstance(document.getElementById('projectModal'));
+  if (modal) modal.hide();
+  setTimeout(() => openPlayable({ playableFile: file, title }), 300);
+}
+
+function openPlayable(project) {
+  const overlay = document.getElementById('playableOverlay');
+  const frame = document.getElementById('playableFrame');
+  const title = document.getElementById('playableTitle');
+  const container = document.getElementById('playableContainer');
+
+  title.textContent = project.title;
+  frame.src = project.playableFile;
+  container.dataset.ratio = '9:16';
+  document.getElementById('btnRatio916').classList.add('active');
+  document.getElementById('btnRatio169').classList.remove('active');
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePlayable() {
+  const overlay = document.getElementById('playableOverlay');
+  const frame = document.getElementById('playableFrame');
+
+  overlay.classList.remove('active');
+  frame.src = '';
+  document.body.style.overflow = '';
+}
+
+// Close button
+document.addEventListener('click', (e) => {
+  if (e.target.closest('#playableCloseBtn')) closePlayable();
+});
+
+// Ratio toggle buttons
+document.getElementById('btnRatio916')?.addEventListener('click', () => {
+  document.getElementById('playableContainer').dataset.ratio = '9:16';
+  document.getElementById('btnRatio916').classList.add('active');
+  document.getElementById('btnRatio169').classList.remove('active');
+});
+document.getElementById('btnRatio169')?.addEventListener('click', () => {
+  document.getElementById('playableContainer').dataset.ratio = '16:9';
+  document.getElementById('btnRatio169').classList.add('active');
+  document.getElementById('btnRatio916').classList.remove('active');
+});
+
+// Reload button
+document.getElementById('btnPlayableReload')?.addEventListener('click', () => {
+  const frame = document.getElementById('playableFrame');
+  const src = frame.src;
+  frame.src = '';
+  requestAnimationFrame(() => { frame.src = src; });
+});
+
+// ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closePlayable();
+});
 
 // --- Scroll Reveal (storytelling scroll) ---
 

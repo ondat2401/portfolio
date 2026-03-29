@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "Portfolio",
+    "title": "OTD-Portfolio",
     "copyright": "2026 Portfolio. All rights reserved.",
     "description": "Game Developer portfolio. Specializing in gameplay systems, playable ads, and mobile game development.",
     "url": "https://yourdomain.com",
@@ -43,17 +43,32 @@
   { "icon": "bi-git", "title": "Production Tools & Pipeline", "desc": "Git, CI/CD, Internal Tools, Firebase" }
 ],
 
-  "latestProject": {
-    "title": "Cat Dash: Cute Cat Music Game",
-    "desc": "A 2D rhythm platformer where every move syncs with the music.",
-    "detail": "A fast-paced 2D rhythm platformer where a reckless cat dashes, jumps, and wall-slides through tight obstacle courses, with every action locked to the beat.<br><br>Role: Solo Playable Developer<br>Built a beat-synced gameplay framework that drives obstacles, traps, and camera feedback directly from the music timeline. Implemented lightweight audio analysis and beat-marking tools for level design, plus responsive dash/jump controls with coyote time and input buffering for a tight, game-feel-first experience. Optimized object pooling and sprite batching to maintain a stable 60fps target on mobile devices.<br><br>Created as a polished portfolio project to showcase rhythm-based gameplay design, technical implementation of music sync, and mobile-ready performance",
-    "image": "assets/media/projects/img/catdash.png",
-    "video": "assets/media/projects/mp4/catdash.mp4",
-    "tech": ["Unity", "C#", "Spine", "DOTween", "Physics 2D", "Particles", "Tile Map"],
-    "playStore": "",
-    "appStore": "",
-    "playableUrl": ""
-  },
+  "highlights": [
+    {
+      "title": "Cat Dash: Cute Cat Music Game",
+      "desc": "A 2D rhythm platformer where every move syncs with the music.",
+      "detail": "A fast-paced 2D rhythm platformer where a reckless cat dashes, jumps, and wall-slides through tight obstacle courses, with every action locked to the beat.<br><br>Role: Solo Playable Developer<br>Built a beat-synced gameplay framework that drives obstacles, traps, and camera feedback directly from the music timeline. Implemented lightweight audio analysis and beat-marking tools for level design, plus responsive dash/jump controls with coyote time and input buffering for a tight, game-feel-first experience. Optimized object pooling and sprite batching to maintain a stable 60fps target on mobile devices.<br><br>Created as a polished portfolio project to showcase rhythm-based gameplay design, technical implementation of music sync, and mobile-ready performance",
+      "image": "assets/media/projects/img/catdash.png",
+      "video": "assets/media/projects/mp4/catdash.mp4",
+      "tech": ["Unity", "C#", "Spine", "DOTween", "Physics 2D", "Particles", "Tile Map"],
+      "playStore": "https://play.google.com/store/apps/details?id=com.musicgame.catdashgame&hl=vi",
+      "appStore": "https://apps.apple.com/us/app/cat-dash-cute-cat-music-game/id6745498566",
+      "playable": true,
+      "playableFile": "playables/cat-dash.html"
+    },
+    {
+      "title": "Magic Dance Star: Rhythm Tiles",
+      "desc": "A character-based rhythm dance game where you tap and swipe to hit choreographed moves in sync with the music.",
+      "detail": "A stylish rhythm dance game where you tap, swipe, and hold notes to trigger choreographed moves, timing each input to the beat as your character performs on stage under dynamic lights and camera cuts.<br><br> Role: Solo Playable Developer<br> Built a beatmap-driven gameplay system that syncs character animations, note patterns, combo effects, and camera movements directly to the music timeline. Implemented timing windows, scoring, combo/multiplier logic, and a feedback system (perfect/great/late) to keep the dance gameplay readable and rewarding. Created internal tools to author and preview beatmaps quickly, and optimized animation blending, VFX, and UI tomaintain a smooth 60fps on mobile devices.<br><br> Designed as a portfolio project to demonstrate rhythm-game design, animation–music synchronization, and scalable content pipelines for dance-centric music games.",
+      "image": "assets/media/projects/img/dancestar.jpg",
+      "video": "assets/media/projects/mp4/gmtp.mp4",
+      "tech": ["Unity", "C#", "Animator", "DOTween", "Shader 3D", "Particles"],
+      "playStore": "https://play.google.com/store/apps/details?id=com.musicgame.magicdance",
+      "appStore": "https://apps.apple.com/vn/app/magic-dance-star-rhythm-tiles/id6755515737 ",
+      "playable": true,
+      "playableFile": "playables/gmtp.html"
+    }
+  ],
 
   "projectCategories": [
     {
@@ -61,15 +76,16 @@
       "label": "Playable Projects",
       "projects": [
         {
-          "title": "Project One",
+          "title": "Tile Hope: Music Ball Clash",
           "desc": "Short description.",
-          "image": "",
-          "detail": "Full detailed description of the project. Technologies used, challenges, etc.",
-          "video": "assets/media/projects/mp4/catdash.mp4",
+          "image": "assets/media/projects/img/bh.png",
+          "detail": "A fast-paced 3D rhythm music game where you drag to guide a bouncing ball across glowing tiles, chaining hops to the beat while avoiding gaps and off-path falls.<br><br>Role: Solo Playable Developer<br>Implemented beat-synced tile spawning based on BPM and precomputed beat maps, with dynamic patterns, speed scaling, and visual effects all driven by the music timeline. Built responsive drag controls, camera follow, and assist features (auto-aim tolerance, coyote time) to keep the game feel tight even at high speeds. Optimized object pooling, mesh batching, and lightweight shaders to keep memory usage low and maintain a smooth 60fps on a wide range of Android devices, even with longer tracks.<br><br>Created as a portfolio project to showcase rhythm-game design, audio-driven level generation, and mobile-ready performance optimization..",
+          "video": "assets/media/projects/mp4/BH.mp4",
           "tech": ["Unity", "C#", "Luna"],
           "playStore": "https://play.google.com/store/apps/details?id=example",
           "appStore": "https://apps.apple.com/app/example/id123456",
-          "playableUrl": "https://ondat24.itch.io/cat-dash-playable"
+          "playable": true,
+          "playableFile": "playables/tile-hop.html"
         },
         {
           "title": "Project Two",
@@ -80,7 +96,8 @@
           "tech": [],
           "playStore": "https://play.google.com/store/apps/details?id=example",
           "appStore": "https://apps.apple.com/app/example/id123456",
-          "playableUrl": ""
+          "playable": false,
+          "playableFile": ""
         },
         {
           "title": "Project Three",
@@ -91,7 +108,8 @@
           "tech": [],
           "playStore": "",
           "appStore": "",
-          "playableUrl": ""
+          "playable": false,
+          "playableFile": ""
         },
         {
           "title": "Project Four",
@@ -102,7 +120,8 @@
           "tech": [],
           "playStore": "",
           "appStore": "",
-          "playableUrl": ""
+          "playable": false,
+          "playableFile": ""
         }
       ]
     },
@@ -118,8 +137,7 @@
           "video": "",
           "tech": [],
           "playStore": "",
-          "appStore": "",
-          "playableUrl": ""
+          "appStore": ""
         },
         {
           "title": "Design Two",
@@ -129,8 +147,7 @@
           "video": "",
           "tech": [],
           "playStore": "",
-          "appStore": "",
-          "playableUrl": ""
+          "appStore": ""
         },
         {
           "title": "Design Three",
@@ -140,8 +157,7 @@
           "video": "",
           "tech": [],
           "playStore": "",
-          "appStore": "",
-          "playableUrl": ""
+          "appStore": ""
         },
         {
           "title": "Design Four",
@@ -151,8 +167,7 @@
           "video": "",
           "tech": [],
           "playStore": "",
-          "appStore": "",
-          "playableUrl": ""
+          "appStore": ""
         }
       ]
     }
@@ -176,6 +191,7 @@
   "socials": [
     { "icon": "bi-github", "link": "https://github.com/ondat2401" },
     { "icon": "bi-linkedin", "link": "https://www.linkedin.com/in/daton2401/" },
-    { "icon": "bi-envelope-fill", "link": "mailto:ondat24@gmail.com" }
+    { "icon": "bi-envelope-fill", "link": "mailto:ondat24@gmail.com" },
+    { "icon": "bi-facebook", "link": "https://www.facebook.com/ondat24012003" }
   ]
 }

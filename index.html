@@ -48,8 +48,9 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#latestProjectSection">Highlights</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li> -->
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -61,6 +62,14 @@
   <!-- Hero -->
   <section id="hero" class="hero-section d-flex align-items-center">
     <div class="container text-center text-white position-relative scroll-reveal scale-up" id="heroContent"></div>
+  </section>
+
+  <!-- Latest Project -->
+  <section id="latestProjectSection" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5 scroll-reveal">Highlights</h2>
+      <div id="latestProject" class="scroll-reveal"></div>
+    </div>
   </section>
 
   <!-- About -->
@@ -90,7 +99,6 @@
   <section id="projects" class="py-5">
     <div class="container">
       <h2 class="section-title text-center mb-5 scroll-reveal">Projects</h2>
-      <div id="latestProject" class="mb-5 scroll-reveal"></div>
       <div id="projectCategories" class="scroll-reveal"></div>
     </div>
   </section>
@@ -143,6 +151,24 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="projectModalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Playable Fullscreen Modal -->
+  <div class="playable-overlay" id="playableOverlay">
+    <div class="playable-header">
+      <span class="playable-title" id="playableTitle"></span>
+      <div class="playable-header-actions">
+        <button class="playable-btn playable-ratio-btn active" id="btnRatio916" aria-label="9:16">9:16</button>
+        <button class="playable-btn playable-ratio-btn" id="btnRatio169" aria-label="16:9">16:9</button>
+        <button class="playable-btn" id="btnPlayableReload" aria-label="Reload">Reload</button>
+        <button class="playable-btn playable-btn--danger" id="playableCloseBtn" aria-label="Close playable">Close</button>
+      </div>
+    </div>
+    <div class="playable-body">
+      <div class="playable-container" id="playableContainer" data-ratio="9:16">
+        <iframe id="playableFrame" class="playable-frame" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
       </div>
     </div>
   </div>
