@@ -7,20 +7,37 @@
     "ogImage": "assets/media/og-preview.png",
     "favicon": "assets/media/projects/img/D.png"
   },
-
+  "sectionTitles": {
+    "highlights": "Highlight Playables Ads",
+    "about": "About Me",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
   "hero": {
     "name": "On Thanh Dat",
     "tagline": "Game Developer | Playable Developer",
     "cta": "View My Work"
   },
-
   "stats": [
-    { "icon": "⚔️", "value": "auto", "label": "Years EXP", "startDate": "2024-12" },
-    { "icon": "🎮", "value": "3+", "label": "Projects Published" },
-    { "icon": "🎯", "value": "50+", "label": "Playable Ads" }
-
+    {
+      "icon": "⚔️",
+      "value": "auto",
+      "label": "Years EXP",
+      "startDate": "2024-12"
+    },
+    {
+      "icon": "🎮",
+      "value": "3+",
+      "label": "Projects Published"
+    },
+    {
+      "icon": "🎯",
+      "value": "50+",
+      "label": "Playable Ads"
+    }
   ],
-
   "about": {
     "description": "Game Developer since 2022, specializing in gameplay systems, playable ads, and mobile game development. Shipped multiple titles across puzzle, platformer, rhythm, and endless runner genres.<br> Currently at Amanotes, building scalable gameplay systems for music games.",
     "cvLink": "#",
@@ -31,18 +48,48 @@
     "avatarOffsetY": 20,
     "quote": "Code is temporary, gameplay is forever."
   },
-
-"skills": [
-  { "icon": "bi-controller", "title": "Game Development", "desc": "Unity, C#, Gameplay Systems, Design Patterns, Physics" },
-  { "icon": "bi-phone", "title": "Playable Ads", "desc": "HTML5, JavaScript, Unity Luna, Ad Network Constraints, Data Tracking" },
-  { "icon": "bi-magic", "title": "Automation & Mass Production", "desc": "Config-driven modules, No-code theming, Template-based production" },
-  { "icon": "bi-cpu", "title": "Optimization & Performance", "desc": "Build size, FPS, Memory/CPU profiling, Texture & Atlas optimization" },
-  { "icon": "bi-code-slash", "title": "Vibe Coding", "desc": "AI-assisted Dev, Rapid Prototyping, Internal AI Tools" },
-  { "icon": "bi-palette", "title": "Game Design", "desc": "Level Design, UI/UX, Balancing, Figma" },
-  { "icon": "bi-gpu-card", "title": "Graphics & Shader", "desc": "Shader Graph, VFX, Particle Systems, 2D/3D" },
-  { "icon": "bi-git", "title": "Production Tools & Pipeline", "desc": "Git, CI/CD, Internal Tools, Firebase" }
-],
-
+  "skills": [
+    {
+      "icon": "bi-controller",
+      "title": "Game Development",
+      "desc": "Unity, C#, Gameplay Systems, Design Patterns, Physics"
+    },
+    {
+      "icon": "bi-phone",
+      "title": "Playable Ads",
+      "desc": "HTML5, JavaScript, Unity Luna, Ad Network Constraints, Data Tracking"
+    },
+    {
+      "icon": "bi-magic",
+      "title": "Automation & Mass Production",
+      "desc": "Config-driven modules, No-code theming, Template-based production"
+    },
+    {
+      "icon": "bi-cpu",
+      "title": "Optimization & Performance",
+      "desc": "Build size, FPS, Memory/CPU profiling, Texture & Atlas optimization"
+    },
+    {
+      "icon": "bi-code-slash",
+      "title": "Vibe Coding",
+      "desc": "AI-assisted Dev, Rapid Prototyping, Internal AI Tools"
+    },
+    {
+      "icon": "bi-palette",
+      "title": "Game Design",
+      "desc": "Level Design, UI/UX, Balancing, Figma"
+    },
+    {
+      "icon": "bi-gpu-card",
+      "title": "Graphics & Shader",
+      "desc": "Shader Graph, VFX, Particle Systems, 2D/3D"
+    },
+    {
+      "icon": "bi-git",
+      "title": "Production Tools & Pipeline",
+      "desc": "Git, CI/CD, Internal Tools, Firebase"
+    }
+  ],
   "highlights": [
     {
       "title": "Cat Dash: Cute Cat Music Game",
@@ -50,8 +97,17 @@
       "detail": "A fast-paced 2D rhythm platformer where a reckless cat dashes, jumps, and wall-slides through tight obstacle courses, with every action locked to the beat.<br><br>Role: Solo Playable Developer<br>Built a beat-synced gameplay framework that drives obstacles, traps, and camera feedback directly from the music timeline. Implemented lightweight audio analysis and beat-marking tools for level design, plus responsive dash/jump controls with coyote time and input buffering for a tight, game-feel-first experience. Optimized object pooling and sprite batching to maintain a stable 60fps target on mobile devices.<br><br>Created as a polished portfolio project to showcase rhythm-based gameplay design, technical implementation of music sync, and mobile-ready performance",
       "image": "assets/media/projects/img/catdash.png",
       "video": "assets/media/projects/mp4/catdash.mp4",
-      "tech": ["Unity", "C#", "Spine", "DOTween", "Physics 2D", "Particles", "Tile Map"],
-      "playStore": "https://play.google.com/store/apps/details?id=com.musicgame.catdashgame&hl=vi",
+      "tech": [
+        "Unity",
+        "C#",
+        "Luna",
+        "Spine",
+        "DOTween",
+        "Physics 2D",
+        "Particles",
+        "Tile Map"
+      ],
+      "playStore": "https://play.google.com/store/apps/details?id=com.musicgame.catdashgame&hl=en",
       "appStore": "https://apps.apple.com/us/app/cat-dash-cute-cat-music-game/id6745498566",
       "playable": true,
       "playableFile": "playables/cat-dash.html"
@@ -62,14 +118,21 @@
       "detail": "A stylish rhythm dance game where you tap, swipe, and hold notes to trigger choreographed moves, timing each input to the beat as your character performs on stage under dynamic lights and camera cuts.<br><br> Role: Solo Playable Developer<br> Built a beatmap-driven gameplay system that syncs character animations, note patterns, combo effects, and camera movements directly to the music timeline. Implemented timing windows, scoring, combo/multiplier logic, and a feedback system (perfect/great/late) to keep the dance gameplay readable and rewarding. Created internal tools to author and preview beatmaps quickly, and optimized animation blending, VFX, and UI tomaintain a smooth 60fps on mobile devices.<br><br> Designed as a portfolio project to demonstrate rhythm-game design, animation–music synchronization, and scalable content pipelines for dance-centric music games.",
       "image": "assets/media/projects/img/dancestar.jpg",
       "video": "assets/media/projects/mp4/gmtp.mp4",
-      "tech": ["Unity", "C#", "Animator", "DOTween", "Shader 3D", "Particles"],
+      "tech": [
+        "Unity",
+        "C#",
+        "Luna",
+        "Animator",
+        "DOTween",
+        "3D Shader",
+        "Particles"
+      ],
       "playStore": "https://play.google.com/store/apps/details?id=com.musicgame.magicdance",
       "appStore": "https://apps.apple.com/vn/app/magic-dance-star-rhythm-tiles/id6755515737 ",
       "playable": true,
       "playableFile": "playables/gmtp.html"
     }
   ],
-
   "projectCategories": [
     {
       "id": "Playable",
@@ -81,98 +144,209 @@
           "image": "assets/media/projects/img/bh.png",
           "detail": "A fast-paced 3D rhythm music game where you drag to guide a bouncing ball across glowing tiles, chaining hops to the beat while avoiding gaps and off-path falls.<br><br>Role: Solo Playable Developer<br>Implemented beat-synced tile spawning based on BPM and precomputed beat maps, with dynamic patterns, speed scaling, and visual effects all driven by the music timeline. Built responsive drag controls, camera follow, and assist features (auto-aim tolerance, coyote time) to keep the game feel tight even at high speeds. Optimized object pooling, mesh batching, and lightweight shaders to keep memory usage low and maintain a smooth 60fps on a wide range of Android devices, even with longer tracks.<br><br>Created as a portfolio project to showcase rhythm-game design, audio-driven level generation, and mobile-ready performance optimization..",
           "video": "assets/media/projects/mp4/BH.mp4",
-          "tech": ["Unity", "C#", "Luna"],
-          "playStore": "https://play.google.com/store/apps/details?id=example",
-          "appStore": "https://apps.apple.com/app/example/id123456",
+          "tech": [
+            "Unity",
+            "C#",
+            "Rhythm",
+            "URP",
+            "DOTween",
+            "Luna",
+            "Particles"
+          ],
+          "playStore": "https://play.google.com/store/apps/details?id=com.amanotes.beathopper&hl=en",
+          "appStore": "https://apps.apple.com/us/app/tiles-hop-music-ball-clash/id1344702806",
           "playable": true,
           "playableFile": "playables/tile-hop.html"
         },
         {
-          "title": "Project Two",
-          "desc": "",
-          "image": "",
-          "detail": "Full detailed description here.",
-          "video": "",
-          "tech": [],
+          "title": "Dancing Road: Color Ball Run",
+          "desc": "A rhythm-based color-matching runner where you swipe to guide a ball along a music-driven track, hitting same-color balls to the beat.",
+          "image": "assets/media/projects/img/DR.jpg",
+          "detail": "A 3D rhythm-based color ball runner where you swipe to steer along a winding track, switching colors and colliding with same-color balls while dodging mismatched ones, all tightly synced to the music.<br><br> Role: Playable Developer<br> Implemented a beat-driven track system that controls obstacle layout, color-change segments, and collectible patterns based on BPM and predefined beatmaps. Designed the color-state logic so collisions, VFX, and score feedback all react instantly to the current ball color and hit accuracy. Tuned swipe controls with smoothing and assist zones for mobile, and optimized object pooling, material usage, and LOD to keep performance stable on a wide range of Android devices.<br><br> Built as a portfolio project to showcase rhythm-runner design, audio-synced level logic, and scalable color-matching mechanics for mobile.",
+          "video": "assets/media/projects/mp4/DR.mp4",
+          "tech": [
+            "Unity",
+            "C#",
+            "Rhythm",
+            "3D Shader",
+            "DOTween",
+            "Luna",
+            "Particles"
+          ],
           "playStore": "https://play.google.com/store/apps/details?id=example",
           "appStore": "https://apps.apple.com/app/example/id123456",
-          "playable": false,
-          "playableFile": ""
+          "playable": true,
+          "playableFile": "playables/dancing-road.html"
         },
         {
-          "title": "Project Three",
+          "title": "Magic Tile 3: Piano Music Game",
           "desc": "Short description.",
-          "image": "",
-          "detail": "Full detailed description here.",
-          "video": "",
-          "tech": [],
-          "playStore": "",
-          "appStore": "",
-          "playable": false,
-          "playableFile": ""
+          "image": "assets/media/projects/img/pi.jpg",
+          "detail": "A fast-paced piano tiles rhythm game where you tap and hold black tiles while avoiding empty spaces, chaining notes to the beat to complete each song with high accuracy and combos.<br><br> Role: Playable Developer<br> Implemented a timing-accurate input system with configurable hit windows (perfect/great/late/miss), combo and multiplier logic, and real-time score calculation. Built a song/level system that maps audio tracks to tile patterns, supports variable speeds and difficulty, and compensates for audio latency on different devices. Added visual and haptic feedback for hits and misses to keep the experience responsive and satisfying. Optimized tile pooling, UI rendering, and audio loading to maintain a smooth 60fps and short loading times on mobile.<br><br> Created as a portfolio project to demonstrate rhythm-game mechanics, audio–input synchronization, and mobile performance optimization for popular piano music gameplay.",
+          "video": "assets/media/projects/mp4/pi.mp4",
+          "tech": [
+            "Unity",
+            "C#",
+            "Rhythm",
+            "2D Shader",
+            "DOTween",
+            "Luna",
+            "Particles"
+          ],
+          "playStore": "https://play.google.com/store/apps/details?id=com.youmusic.magictiles&hl=en",
+          "appStore": "https://apps.apple.com/us/app/magic-tiles-3-piano-game/id1443446174",
+          "playable": true,
+          "playableFile": "playables/pi.html"
         },
         {
-          "title": "Project Four",
+          "title": "Duet Cats: Cute Music Game",
           "desc": "Short description.",
-          "image": "",
-          "detail": "Full detailed description here.",
-          "video": "",
-          "tech": [],
-          "playStore": "",
-          "appStore": "",
-          "playable": false,
-          "playableFile": ""
+          "image": "assets/media/projects/img/gduc.png",
+          "detail": "A minimalist rhythm-based arcade game inspired by duet-style mechanics, where two linked cats orbit around a center point and you rotate them to weave through incoming obstacles, all tightly synced to the soundtrack.<br><br> Role: Playable Developer<br> Built a twin-orbit control system with precise angular movement, collision detection, and easing curves to keep rotations responsive yet readable at high speeds. Implemented beat-aligned obstacle spawning driven by predefined patterns and BPM data, with dynamic difficulty scaling based on player performance. Tuned camera shake, trails, and hit/miss feedback to reinforce the musical rhythm and maintain a satisfying game feel. Optimized pooling and lightweight shaders to keep performance smooth on mid- to low-end mobile devices.<br><br> Created as a portfolio project to showcase minimalist game design, rhythm-synced obstacle patterns, and polished duet-style controls tailored for mobile.",
+          "video": "assets/media/projects/mp4/gduc.mp4",
+          "tech": [
+            "Unity",
+            "C#",
+            "Rhythm",
+            "2D Shader",
+            "DOTween",
+            "Luna",
+            "Particles"
+          ],
+          "playStore": "https://play.google.com/store/apps/details?id=com.amanotes.gs.g06&hl=en",
+          "appStore": "https://apps.apple.com/vn/app/duet-cats-rhythm-meow-game/id1658687701",
+          "playable": true,
+          "playableFile": "playables/gduc.html"
+        },
+        {
+          "title": "Decor Room: Animal Music Party",
+          "desc": "A cozy music-decor game where you design an animal party room, placing interactive items that react and groove to the music.",
+          "image": "assets/media/projects/img/ncdr.jpg",
+          "detail": "A cozy music-decor experience where you design a party room for cute animal characters, placing furniture, lights, and interactive music objects that react to the beat. As you decorate, each item adds sound, animation, or visual effects, turning the room into a living music party scene.<br><br> Role: Solo Playable Developer<br> Built a modular decor system where each object can attach its own sound layer, animation, and VFX, all driven by a shared music timeline. Implemented snap-based placement, drag-and-drop controls, and stateful items (on/off, upgraded variants) to keep decorating simple but expressive on mobile. Created a lightweight audio layering system so multiple objects can add loops and sound effects without overloading the mix, and synchronized key animations (lights, dancing animals, confetti) with musical beats and sections. Optimized batching, pooling, and culling for a stable 60fps target even in heavily decorated rooms.<br><br> Created as a portfolio project to highlight casual game UX, audio-reactive systems, and mobile-friendly performance for interactive music scenes.",
+          "video": "assets/media/projects/mp4/ncdr.mp4",
+          "tech": [
+            "Unity",
+            "C#",
+            "Puzzle",
+            "2D Shader",
+            "DOTween",
+            "Luna",
+            "Particles"
+          ],
+          "playStore": "https://play.google.com/store/apps/details?id=com.ngd.capybaradream&hl=en",
+          "appStore": "https://apps.apple.com/us/app/decor-room-animal-music-party/id6754315956",
+          "playable": true,
+          "playableFile": "playables/ncdr.html"
+        },
+        {
+          "title": "Word Music Explored",
+          "desc": "AA word puzzle rhythm game where you form words to unlock music layers and explore dynamic soundscapes.",
+          "image": "assets/media/projects/img/wom.jpg",
+          "detail": "A hybrid word puzzle and music exploration game where you spell words from given letters to unlock new instruments, loops, and sound layers, gradually building a full track as you progress through each level.<br><br> Role: Solo Playable Developer<br> Designed and implemented a flexible word-generation and validation system, combined with a music layering pipeline that maps player progress to dynamic changes in the soundtrack (adding instruments, filters, and transitions). Built level structures with themed word sets and difficulty curves, plus progression systems that reward longer words and smart letter usage. Synced visual feedback (waves, pulses, particle effects) to both correct words and musical changes to keep the experience readable and satisfying on mobile.<br><br> Developed as a portfolio project to showcase hybrid game design (puzzle + music), audio-reactive systems, and a scalable content pipeline for word-based music experiences.",
+          "video": "assets/media/projects/mp4/wom.mp4",
+          "tech": [
+            "Unity",
+            "C#",
+            "Puzzle",
+            "DOTween",
+            "Luna",
+            "Line Renderer"
+          ],
+          "playStore": "https://play.google.com/store/apps/details?id=com.core.wordmusic&hl=en",
+          "appStore": "https://apps.apple.com/us/app/word-puzzle-music/id6751626442",
+          "playable": true,
+          "playableFile": "playables/wom.html"
+        },
+        {
+          "title": "Word Music Explored",
+          "desc": "AA word puzzle rhythm game where you form words to unlock music layers and explore dynamic soundscapes.",
+          "image": "assets/media/projects/img/nct.jpg",
+          "detail": "A rhythm-based tap gallery experience where you tap notes to the beat to reveal animated photo walls, stickers, and special visual moments synced with the music.<br><br> Role: Solo Playable Developer<br> Implemented a beatmap-driven tap system that synchronizes note patterns, combo effects, and gallery reveals directly to each song’s timeline. Built a gallery framework where photos, stickers, and overlays can be arranged in themed layouts and unlocked progressively based on player performance. Added lightweight shaders, transitions, and particle effects to highlight key beats while keeping performance smooth on mobile devices.<br><br> Developed as a portfolio project to showcase rhythm-based interaction design, music-synced visuals, and stylish gallery presentation for mobile.",
+          "video": "assets/media/projects/mp4/nct.mp4",
+          "tech": [
+            "Unity",
+            "C#",
+            "Puzzle",
+            "DOTween",
+            "Luna",
+            "Particles"
+          ],
+          "playStore": "https://play.google.com/store/apps/details?id=com.ngd.tapmusic&hl=en",
+          "appStore": "https://apps.apple.com/us/app/tap-music-gallery/id6752386492?l=en",
+          "playable": true,
+          "playableFile": "playables/nct.html"
         }
       ]
     },
     {
       "id": "Product",
-      "label": "Product Projects",
+      "label": "Published Projects",
       "projects": [
         {
-          "title": "Design One",
-          "desc": "Short description.",
-          "image": "",
+          "title": "Cat Bus Jam: Seat Out",
+          "desc": "A cute traffic puzzle where you match cats to their color-coded buses and clear traffic jams with simple, satisfying moves.",
+          "image": "assets/media/projects/img/catbusjam.png",
+          "detail": "A charming traffic puzzle game where you slide and rearrange cats and buses on a crowded grid, matching each cat to the bus of the same color while untangling increasingly tricky jams at the station. <br><br> Role: Unity Developer<br> Designed and implemented core color-matching and traffic-unblocking mechanics, with level progression that gradually introduces tighter layouts and more complex jams. Focused on readable UX for drag/tap interactions, clear visual feedback when cats reach the right bus, and smooth animations that reinforce the “cute chaos” theme. Optimized level data and assets for quick loads and stable performance on low- to mid-range Android devices.<br><br> Released on Google Play as a casual puzzle title to showcase accessible level design, satisfying match-and-clear gameplay, and mobile-ready performance for a broad audience.",
+          "video": "assets/media/projects/mp4/catbusjam.mp4",
+          "tech": [
+            "Unity",
+            "C#",
+            "Puzzle",
+            "3D Shader",
+            "DOTween",
+            "SDK",
+            "FireBase"
+          ],
+          "playStore": "https://play.google.com/store/apps/details?id=com.catbus.puzzle.escape.mp&hl=vi",
+          "appStore": ""
+        },
+        {
+          "title": "Pizza Mania: Slice Sort",
+          "desc": "A cozy food-themed puzzle where you sort colorful pizza slices onto matching plates to complete perfect pies.",
+          "image": "assets/media/projects/img/pizza.png",
+          "detail": "A casual slice-sorting puzzle game where you drag and stack pizza slices onto matching plates, planning each move to group identical toppings and complete full pizzas with the fewest moves possible. Levels gradually introduce more toppings, plates, and trickier layouts, turning a simple mechanic into a satisfying, brain-teasing experience.<br><br> Role: Solo Developer<br> Designed and implemented core slice-sorting mechanics with drag-and-drop interactions, limited-move challenges, and undo/hint systems to keep the game accessible while rewarding smart planning. Built a flexible level system supporting handcrafted and pattern-based layouts, plus progressive difficulty tuning. Optimized object pooling, sprite atlases, and lightweight UI transitions to maintain smooth performance and quick level reloads on a wide range of Android devices.<br><br> Created as a portfolio project to showcase mobile puzzle design, tactile drag-based interactions, and efficient 2D performance optimization in a casual, food-themed setting.",
+          "video": "assets/media/projects/mp4/pizza.mp4",
+          "tech": [
+            "Unity",
+            "C#",
+            "Puzzle",
+            "3D Shader",
+            "DOTween",
+            "SDK",
+            "FireBase"
+          ],
+          "playStore": "https://pizza-mania-slice-sort.en.softonic.com/android",
+          "appStore": ""
+        }
+      ]
+    },
+    {
+      "id": "Personal",
+      "label": "Personal Projects",
+      "projects": [
+        {
+          "title": "Neclor Frame",
+          "desc": "",
+          "image": "assets/media/projects/img/nf.png",
           "detail": "Full detailed description here.",
-          "video": "",
-          "tech": [],
+          "video": "assets/media/projects/mp4/nf.mp4",
+          "tech": [
+            "Unity",
+            "C#",
+            "Puzzle",
+            "Post Processing",
+            "DOTween",
+            "State Machine",
+            "Aseprite"
+          ],
           "playStore": "",
-          "appStore": ""
-        },
-        {
-          "title": "Design Two",
-          "desc": "Short description.",
-          "image": "",
-          "detail": "Full detailed description here.",
-          "video": "",
-          "tech": [],
-          "playStore": "",
-          "appStore": ""
-        },
-        {
-          "title": "Design Three",
-          "desc": "Short description.",
-          "image": "",
-          "detail": "",
-          "video": "",
-          "tech": [],
-          "playStore": "",
-          "appStore": ""
-        },
-        {
-          "title": "Design Four",
-          "desc": "Short description.",
-          "image": "",
-          "detail": "",
-          "video": "",
-          "tech": [],
-          "playStore": "",
-          "appStore": ""
+          "appStore": "",
+          "playable": true,
+          "playableFile": "https://ondat24.itch.io/neclor-frame"
         }
       ]
     }
   ],
-
   "timeline": [
     {
       "period": "2025 - Present",
@@ -187,11 +361,22 @@
       "desc": "Developed and published multiple mobile games across puzzle, platformer genres."
     }
   ],
-
   "socials": [
-    { "icon": "bi-github", "link": "https://github.com/ondat2401" },
-    { "icon": "bi-linkedin", "link": "https://www.linkedin.com/in/daton2401/" },
-    { "icon": "bi-envelope-fill", "link": "mailto:ondat24@gmail.com" },
-    { "icon": "bi-facebook", "link": "https://www.facebook.com/ondat24012003" }
+    {
+      "icon": "bi-github",
+      "link": "https://github.com/ondat2401"
+    },
+    {
+      "icon": "bi-linkedin",
+      "link": "https://www.linkedin.com/in/daton2401/"
+    },
+    {
+      "icon": "bi-envelope-fill",
+      "link": "mailto:ondat24@gmail.com"
+    },
+    {
+      "icon": "bi-facebook",
+      "link": "https://www.facebook.com/ondat24012003"
+    }
   ]
 }

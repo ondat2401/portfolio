@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const config = await res.json();
 
   renderHero(config.hero);
+  renderSectionTitles(config.sectionTitles);
   renderStats(config.stats);
   renderAbout(config.about);  renderSkills(config.skills);
   renderHighlights(config.highlights);
@@ -59,6 +60,23 @@ function renderHero({ name, tagline, cta }) {
     </div>
   `;
 }
+
+function renderSectionTitles(titles) {
+  if (!titles) return;
+  const map = {
+    highlights: 'titleHighlights',
+    about: 'titleAbout',
+    skills: 'titleSkills',
+    projects: 'titleProjects',
+    experience: 'titleExperience',
+    contact: 'titleContact'
+  };
+  Object.entries(map).forEach(([key, id]) => {
+    const el = document.getElementById(id);
+    if (el && titles[key]) el.textContent = titles[key];
+  });
+}
+
 
 function renderStats(stats) {
   const bar = document.getElementById('statsBar');
@@ -701,13 +719,23 @@ function closeModalAndPlay(btn) {
 }
 
 function openPlayable(project) {
+  const file = project.playableFile;
+  if (!file) return;
+
+  // External URL → open in new tab
+  if (file.startsWith('http://') || file.startsWith('https://')) {
+    window.open(file, '_blank');
+    return;
+  }
+
+  // Local file → embed in overlay
   const overlay = document.getElementById('playableOverlay');
   const frame = document.getElementById('playableFrame');
   const title = document.getElementById('playableTitle');
   const container = document.getElementById('playableContainer');
 
   title.textContent = project.title;
-  frame.src = project.playableFile;
+  frame.src = file;
   container.dataset.ratio = '9:16';
   document.getElementById('btnRatio916').classList.add('active');
   document.getElementById('btnRatio169').classList.remove('active');

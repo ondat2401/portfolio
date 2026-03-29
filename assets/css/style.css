@@ -454,6 +454,27 @@ section {
   line-height: 1.7;
 }
 
+.modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-bg-dark);
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: var(--color-bg-dark);
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
 .btn-close {
   filter: invert(1);
 }
