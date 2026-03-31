@@ -156,7 +156,7 @@
           "playStore": "https://play.google.com/store/apps/details?id=com.amanotes.beathopper&hl=en",
           "appStore": "https://apps.apple.com/us/app/tiles-hop-music-ball-clash/id1344702806",
           "playable": true,
-          "playableFile": "playables/tile-hop.html"
+          "playableFile": "playables/bh.html"
         },
         {
           "title": "Dancing Road: Color Ball Run",
@@ -176,7 +176,7 @@
           "playStore": "https://play.google.com/store/apps/details?id=example",
           "appStore": "https://apps.apple.com/app/example/id123456",
           "playable": true,
-          "playableFile": "playables/dancing-road.html"
+          "playableFile": "playables/dr.html"
         },
         {
           "title": "Magic Tile 3: Piano Music Game",
