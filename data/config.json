@@ -312,7 +312,7 @@
           ]
         },
         {
-          "title": "Idle Shop: Cozy Clicker",
+          "title": "Mega Market Idle",
           "desc": "An idle shop-management mini game where you stock shelves, hire helpers, and watch revenue grow even while you’re not actively tapping.",
           "image": "assets/media/projects/img/ais.jpg",
           "detail": "A compact idle-management game built around running a tiny storefront that gradually scales into a bustling shop, balancing upgrades, automation, and satisfying number growth.<br><br> Role: Playable Developer<br> Implemented tap and drag interactions for stocking shelves and upgrading product slots, with clear visual states for locked, active, and maxed-out items. Built a time-based production and revenue system driven by scriptable config data, allowing each item line to define its own base income, production time, and upgrade curve. Added soft-prestige mechanics through global multipliers and manager boosts so short sessions still feel meaningfully rewarding.<br><br> Designed upgrade pacing using exponential and sub-exponential growth curves to keep early-game progress snappy while preventing late-game values from exploding uncontrollably. Integrated auto-collect helpers, progress bars, and floating gain text to make passive income feel tangible even when the player is mostly watching. Tuned particles, SFX hooks, and subtle punch/scale animations on key actions (buy, upgrade, collect) to keep the experience tactile and readable on mobile.<br><br> Created as a portfolio project to showcase idle-economy balancing, data-driven upgrade systems, and clear, satisfying management UI tailored for short playable-ad length sessions.",
