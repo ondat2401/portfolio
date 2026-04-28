@@ -667,6 +667,24 @@ function showProjectModal(project) {
     }
   }
 
+  // Playable CTA — prominent, right after video
+  if (project.playable && project.playableFiles && project.playableFiles.length) {
+    body += `
+      <div class="playable-cta">
+        <div class="playable-cta__text">
+          <span class="playable-cta__icon">🎮</span>
+          <div>
+            <strong class="playable-cta__title">Try it yourself</strong>
+            <span class="playable-cta__desc">Experience the gameplay I built — runs right in your browser.</span>
+          </div>
+        </div>
+        <button class="btn playable-cta__btn" onclick="closeModalAndPlay(this)" data-files='${JSON.stringify(project.playableFiles)}' data-title="${project.title}">
+          <i class="bi bi-play-fill"></i> Play Now
+        </button>
+      </div>
+    `;
+  }
+
   // Meta row (duration + role)
   const durationHtml = renderDurationBadge(project.duration);
   const roleHtml = renderRoleBadge(project.role);
@@ -691,24 +709,19 @@ function showProjectModal(project) {
   body += renderMetrics(project.metrics);
 
   // Store links
-  const links = [];
+  const storeLinks = [];
   if (project.playStore) {
-    links.push(`<a href="${project.playStore}" target="_blank" class="btn btn-outline-gplay">
+    storeLinks.push(`<a href="${project.playStore}" target="_blank" class="btn btn-outline-gplay">
       <i class="bi bi-google-play"></i> Google Play
     </a>`);
   }
   if (project.appStore) {
-    links.push(`<a href="${project.appStore}" target="_blank" class="btn btn-outline-light">
+    storeLinks.push(`<a href="${project.appStore}" target="_blank" class="btn btn-outline-light">
       <i class="bi bi-apple"></i> App Store
     </a>`);
   }
-  if (project.playable && project.playableFiles && project.playableFiles.length) {
-    links.push(`<button class="btn btn-outline-warning btn-play-modal" onclick="closeModalAndPlay(this)" data-files='${JSON.stringify(project.playableFiles)}' data-title="${project.title}">
-      <i class="bi bi-play-fill"></i> Play Now
-    </button>`);
-  }
-  if (links.length) {
-    body += `<div class="d-flex gap-2 flex-wrap mt-3">${links.join('')}</div>`;
+  if (storeLinks.length) {
+    body += `<div class="d-flex gap-2 flex-wrap mt-3">${storeLinks.join('')}</div>`;
   }
 
   // Tech stack

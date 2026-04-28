@@ -492,6 +492,83 @@ section {
   filter: invert(1);
 }
 
+/* --- Playable CTA Block --- */
+.playable-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: linear-gradient(135deg, rgba(255, 204, 0, 0.08), rgba(255, 204, 0, 0.02));
+  border: 1.5px solid rgba(255, 204, 0, 0.25);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+}
+
+.playable-cta__text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.playable-cta__icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.playable-cta__title {
+  display: block;
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  color: var(--color-primary);
+  text-shadow: var(--glow-primary);
+  margin-bottom: 2px;
+}
+
+.playable-cta__desc {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.playable-cta__btn {
+  flex-shrink: 0;
+  background: var(--color-primary);
+  color: #000;
+  font-family: var(--font-pixel);
+  font-size: 0.45rem;
+  font-weight: 700;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 0 12px rgba(255, 204, 0, 0.3);
+}
+
+.playable-cta__btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+  background: var(--color-primary);
+  color: #000;
+}
+
+@media (max-width: 576px) {
+  .playable-cta {
+    flex-direction: column;
+    text-align: center;
+  }
+  .playable-cta__text {
+    flex-direction: column;
+  }
+  .playable-cta__btn {
+    width: 100%;
+  }
+}
+
 /* --- Contact Form --- */
 .form-control {
   background: #0a0a2a;
@@ -1371,6 +1448,15 @@ html.light-theme .modal-body::-webkit-scrollbar-track {
 
 html.light-theme .modal-body p {
   color: var(--color-text-muted);
+}
+
+html.light-theme .playable-cta {
+  background: linear-gradient(135deg, rgba(255, 170, 0, 0.08), rgba(255, 170, 0, 0.02));
+  border-color: rgba(255, 170, 0, 0.3);
+}
+
+html.light-theme .playable-cta__btn {
+  box-shadow: 0 0 12px rgba(255, 170, 0, 0.25);
 }
 
 html.light-theme .btn-close {
