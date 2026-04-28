@@ -69,33 +69,39 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
   setLoadProgress(10);
 
-  const res = await fetch('data/config.json');
+  // Load data files in parallel
+  const [siteRes, profileRes, projectsRes] = await Promise.all([
+    fetch('data/site.json'),
+    fetch('data/profile.json'),
+    fetch('data/projects.json')
+  ]);
   setLoadProgress(30);
-  const config = await res.json();
+  const site = await siteRes.json();
+  const profile = await profileRes.json();
+  const projects = await projectsRes.json();
   setLoadProgress(50);
 
-  renderHero(config.hero, config.about.cvLink);
-  renderSectionTitles(config.sectionTitles);
-  renderStats(config.stats);
+  renderHero(profile.hero, profile.about.cvLink);
+  renderSectionTitles(site.sectionTitles);
+  renderStats(profile.stats);
   setLoadProgress(60);
-  renderAbout(config.about);
-  renderSkills(config.skills);
+  renderAbout(profile.about);
+  renderSkills(profile.skills);
   setLoadProgress(70);
-  renderHighlights(config.highlights);
-  renderProjectCategories(config.projectCategories);
+  renderHighlights(projects.highlights);
+  renderProjectCategories(projects.projectCategories);
   setLoadProgress(80);
-  renderTimeline(config.timeline);
-  renderFooter(config.site, config.socials);
+  renderTimeline(profile.timeline);
+  renderFooter(site, profile.socials);
   setLoadProgress(90);
 
-  document.title = config.site.title;
+  document.title = site.title;
 
   // Set nav CV button
   const navCv = document.getElementById('navCvBtn');
-  if (navCv && config.about.cvLink) navCv.href = config.about.cvLink;
+  if (navCv && profile.about.cvLink) navCv.href = profile.about.cvLink;
 
-  // Set meta tags from config
-  const site = config.site;
+  // Set meta tags
   const setMeta = (id, content) => { const el = document.getElementById(id); if (el && content) el.content = content; };
   setMeta('metaDesc', site.description);
   setMeta('ogTitle', site.title);
@@ -105,12 +111,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   setMeta('twTitle', site.title);
   setMeta('twDesc', site.description);
   setMeta('twImage', site.ogImage);
-  document.querySelector('meta[name="author"]').content = config.hero.name;
+  document.querySelector('meta[name="author"]').content = profile.hero.name;
   if (site.favicon) document.querySelector('link[rel="icon"]').href = site.favicon;
 
   // Set navbar brand name
   const brand = document.getElementById('navBrand');
-  if (brand) brand.textContent = config.hero.name;
+  if (brand) brand.textContent = profile.hero.name;
 
   // --- Apply custom cursor from config ---
   if (uiConfig.cursor?.default) {
@@ -135,7 +141,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   setTimeout(() => {
     if (loadingScreen) loadingScreen.classList.add('hidden');
     // Start typing effect after loading screen fades
-    setTimeout(() => initTypingEffect(config.hero, uiConfig.typing), startDelay);
+    setTimeout(() => initTypingEffect(profile.hero, uiConfig.typing), startDelay);
     // Open project modal from URL hash (deep link)
     openProjectFromHash();
   }, 600);

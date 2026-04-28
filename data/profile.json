@@ -1,0 +1,113 @@
+{
+  "hero": {
+    "name": "On Thanh Dat",
+    "tagline": "Game Developer | Playable Developer",
+    "cta": "View My Work"
+  },
+  "stats": [
+    {
+      "icon": "⚔️",
+      "value": "auto",
+      "label": "Years EXP",
+      "startDate": "2024-4"
+    },
+    {
+      "icon": "🎮",
+      "value": "3+",
+      "label": "Projects Published"
+    },
+    {
+      "icon": "🎯",
+      "value": "50+",
+      "label": "Playable Ads"
+    }
+  ],
+  "about": {
+    "description": "Game Developer since 2022, specializing in gameplay systems, playable ads, and mobile game development. Shipped multiple titles across puzzle, platformer, rhythm, and endless runner genres.<br> Currently at Amanotes, building scalable gameplay systems for music games.",
+    "cvLink": "assets/media/CV.pdf",
+    "email": "ondat24@gmail.com",
+    "avatar": "assets/media/projects/mp4/avt.mp4",
+    "avatarZoom": 1.5,
+    "avatarOffsetX": -5,
+    "avatarOffsetY": 20,
+    "quote": "Code is temporary, gameplay is forever."
+  },
+  "skills": [
+    {
+      "icon": "bi-controller",
+      "title": "Game Development",
+      "desc": "Unity, C#, Gameplay Systems, Design Patterns, Physics"
+    },
+    {
+      "icon": "bi-phone",
+      "title": "Playable Ads",
+      "desc": "HTML5, JavaScript, Unity Luna, Ad Network Constraints, Data Tracking"
+    },
+    {
+      "icon": "bi-magic",
+      "title": "Automation & Mass Production",
+      "desc": "Config-driven modules, No-code theming, Template-based production"
+    },
+    {
+      "icon": "bi-cpu",
+      "title": "Optimization & Performance",
+      "desc": "Build size, FPS, Memory/CPU profiling, Texture & Atlas optimization"
+    },
+    {
+      "icon": "bi-code-slash",
+      "title": "Vibe Coding",
+      "desc": "AI-assisted Dev, Rapid Prototyping, Internal AI Tools"
+    },
+    {
+      "icon": "bi-palette",
+      "title": "Game Design",
+      "desc": "Level Design, UI/UX, Balancing, Figma"
+    },
+    {
+      "icon": "bi-gpu-card",
+      "title": "Graphics & Shader",
+      "desc": "Shader Graph, VFX, Particle Systems, 2D/3D"
+    },
+    {
+      "icon": "bi-git",
+      "title": "Production Tools & Pipeline",
+      "desc": "Git, CI/CD, Internal Tools, Firebase"
+    }
+  ],
+  "timeline": [
+    {
+      "period": "2025 - Present",
+      "role": "Playable Ads Developer",
+      "company": "Amanotes",
+      "desc": "Building playable ads for music games. Config-driven production, optimization, cross-network deployment."
+    },
+    {
+      "period": "2023 - 2025",
+      "role": "Unity Game Developer",
+      "company": "MoPa Games / Indie",
+      "desc": "Developed and published multiple mobile games across puzzle, platformer genres."
+    }
+  ],
+  "socials": [
+    {
+      "icon": "bi-joystick",
+      "link": "https://ondat24.itch.io"
+    },
+    {
+      "icon": "bi-github",
+      "link": "https://github.com/ondat2401"
+    },
+    {
+      "icon": "bi-linkedin",
+      "link": "https://www.linkedin.com/in/daton2401/"
+    },
+    {
+      "icon": "bi-envelope-fill",
+      "link": "mailto:ondat24@gmail.com"
+    },
+    {
+      "icon": "bi-facebook",
+      "link": "https://www.facebook.com/ondat24012003"
+    }
+  ]
+}

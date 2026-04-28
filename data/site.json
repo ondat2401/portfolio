@@ -1,0 +1,16 @@
+{
+  "title": "OTD-Portfolio",
+  "copyright": "2026 Portfolio. All rights reserved.",
+  "description": "Game Developer portfolio. Specializing in gameplay systems, playable ads, and mobile game development.",
+  "url": "https://ondat2401.github.io/portfolio/",
+  "ogImage": "assets/media/og-preview.png",
+  "favicon": "assets/media/projects/img/D.png",
+  "sectionTitles": {
+    "highlights": "Highlight Playables Ads",
+    "about": "About Me",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  }
+}
