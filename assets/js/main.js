@@ -712,8 +712,7 @@ function showProjectModal(project) {
         <div class="playable-cta__text">
           <span class="playable-cta__icon">🎮</span>
           <div>
-            <strong class="playable-cta__title">Try it yourself</strong>
-            <span class="playable-cta__desc">Experience the gameplay I built — runs right in your browser.</span>
+            <strong class="playable-cta__title">Play in Browser</strong>
           </div>
         </div>
         <button class="btn playable-cta__btn" onclick="closeModalAndPlay(this)" data-files='${JSON.stringify(project.playableFiles)}' data-title="${project.title}">
