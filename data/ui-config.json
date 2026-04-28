@@ -17,5 +17,31 @@
     "deleteSpeed": 15,
     "pauseDuration": 2000,
     "startDelay": 400
+  },
+  "modal": {
+    "playableCta": {
+      "icon": "🎮",
+      "title": "Play in Browser",
+      "btnText": "Play Now",
+      "btnIcon": "bi-play-fill"
+    },
+    "sections": {
+      "impacts": { "icon": "💡", "title": "Key Contributions" },
+      "hypotheses": { "icon": "🧪", "title": "Hypotheses Tested" },
+      "metrics": { "icon": "📊", "title": "Impact Metrics" }
+    },
+    "badges": {
+      "duration": { "icon": "⏱" },
+      "role": { "icon": "🎮" }
+    },
+    "hypothesis": {
+      "adopted": "✓ Adopted",
+      "rejected": "✗ Rejected",
+      "resultLabel": "Result:"
+    },
+    "storeButtons": {
+      "googlePlay": { "icon": "bi-google-play", "text": "Google Play" },
+      "appStore": { "icon": "bi-apple", "text": "App Store" }
+    }
   }
 }

@@ -7,6 +7,7 @@ const PROJECTS_PER_PAGE = 6;
 const pageState = {}; // track current page per category
 let allCategories = []; // store for modal lookup
 let allHighlights = []; // store highlights for deep link lookup
+let modalConfig = {}; // modal UI config
 
 // Slugify a project title for URL hash
 function slugify(str) {
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     const uiRes = await fetch('data/ui-config.json');
     uiConfig = await uiRes.json();
+    modalConfig = uiConfig.modal || {};
   } catch (e) { /* fallback to defaults */ }
 
   // --- Apply loading screen icon & text from config ---
@@ -613,24 +615,29 @@ function renderProjectPage(cat, animate = true, direction = 'next') {
 
 const renderDurationBadge = (duration) => {
   if (!duration || !duration.from || !duration.to) return '';
+  const icon = modalConfig.badges?.duration?.icon || '⏱';
   const formatDate = (str) => {
     if (str === 'Present') return 'Present';
     const [year, month] = str.split('-');
     return `${month}/${year}`;
   };
-  return `<span class="duration-badge">⏱ ${formatDate(duration.from)} → ${formatDate(duration.to)}</span>`;
+  return `<span class="duration-badge">${icon} ${formatDate(duration.from)} → ${formatDate(duration.to)}</span>`;
 };
 
 const renderRoleBadge = (role) => {
   if (!role || !role.trim()) return '';
-  return `<span class="role-badge">🎮 ${role}</span>`;
+  const icon = modalConfig.badges?.role?.icon || '🎮';
+  return `<span class="role-badge">${icon} ${role}</span>`;
 };
 
 const renderImpacts = (impacts) => {
   if (!impacts || !Array.isArray(impacts) || !impacts.length) return '';
+  const cfg = modalConfig.sections?.impacts || {};
+  const icon = cfg.icon || '💡';
+  const title = cfg.title || 'Key Contributions';
   return `
     <div class="impact-section">
-      <h6>💡 Key Contributions</h6>
+      <h6>${icon} ${title}</h6>
       ${impacts.map((item) => `
         <div class="impact-item">
           <strong>${item.label}:</strong> ${item.desc}
@@ -642,18 +649,25 @@ const renderImpacts = (impacts) => {
 
 const renderHypotheses = (hypotheses) => {
   if (!hypotheses || !Array.isArray(hypotheses) || !hypotheses.length) return '';
+  const cfg = modalConfig.sections?.hypotheses || {};
+  const hCfg = modalConfig.hypothesis || {};
+  const icon = cfg.icon || '🧪';
+  const title = cfg.title || 'Hypotheses Tested';
+  const adoptedText = hCfg.adopted || '✓ Adopted';
+  const rejectedText = hCfg.rejected || '✗ Rejected';
+  const resultLabel = hCfg.resultLabel || 'Result:';
   return `
     <div class="hypothesis-section">
-      <h6>🧪 Hypotheses Tested</h6>
+      <h6>${icon} ${title}</h6>
       ${hypotheses.map((h) => {
         const adopted = h.adopted === true;
         const statusClass = adopted ? 'hypothesis-status--adopted' : 'hypothesis-status--rejected';
-        const statusText = adopted ? '✓ Adopted' : '✗ Rejected';
+        const statusText = adopted ? adoptedText : rejectedText;
         return `
           <div class="hypothesis-card">
             <h6>${h.name} <span class="hypothesis-status ${statusClass}">${statusText}</span></h6>
             <p>${h.desc}</p>
-            <p><strong>Result:</strong> ${h.result}</p>
+            <p><strong>${resultLabel}</strong> ${h.result}</p>
           </div>
         `;
       }).join('')}
@@ -663,9 +677,12 @@ const renderHypotheses = (hypotheses) => {
 
 const renderMetrics = (metrics) => {
   if (!metrics || !Array.isArray(metrics) || !metrics.length) return '';
+  const cfg = modalConfig.sections?.metrics || {};
+  const icon = cfg.icon || '📊';
+  const title = cfg.title || 'Impact Metrics';
   return `
     <div class="metrics-section">
-      <h6>📊 Impact Metrics</h6>
+      <h6>${icon} ${title}</h6>
       ${metrics.map((m) => {
         let trendHtml = '';
         const before = Number(m.before);
@@ -723,16 +740,21 @@ function showProjectModal(project) {
 
   // Playable CTA — prominent, right after video
   if (project.playable && project.playableFiles && project.playableFiles.length) {
+    const cta = modalConfig.playableCta || {};
+    const ctaIcon = cta.icon || '🎮';
+    const ctaTitle = cta.title || 'Play in Browser';
+    const btnText = cta.btnText || 'Play Now';
+    const btnIcon = cta.btnIcon || 'bi-play-fill';
     body += `
       <div class="playable-cta">
         <div class="playable-cta__text">
-          <span class="playable-cta__icon">🎮</span>
+          <span class="playable-cta__icon">${ctaIcon}</span>
           <div>
-            <strong class="playable-cta__title">Play in Browser</strong>
+            <strong class="playable-cta__title">${ctaTitle}</strong>
           </div>
         </div>
         <button class="btn playable-cta__btn" onclick="closeModalAndPlay(this)" data-files='${JSON.stringify(project.playableFiles)}' data-title="${project.title}">
-          <i class="bi bi-play-fill"></i> Play Now
+          <i class="bi ${btnIcon}"></i> ${btnText}
         </button>
       </div>
     `;
@@ -763,14 +785,17 @@ function showProjectModal(project) {
 
   // Store links
   const storeLinks = [];
+  const storeCfg = modalConfig.storeButtons || {};
+  const gpCfg = storeCfg.googlePlay || {};
+  const asCfg = storeCfg.appStore || {};
   if (project.playStore) {
     storeLinks.push(`<a href="${project.playStore}" target="_blank" class="btn btn-outline-gplay">
-      <i class="bi bi-google-play"></i> Google Play
+      <i class="bi ${gpCfg.icon || 'bi-google-play'}"></i> ${gpCfg.text || 'Google Play'}
     </a>`);
   }
   if (project.appStore) {
     storeLinks.push(`<a href="${project.appStore}" target="_blank" class="btn btn-outline-light">
-      <i class="bi bi-apple"></i> App Store
+      <i class="bi ${asCfg.icon || 'bi-apple'}"></i> ${asCfg.text || 'App Store'}
     </a>`);
   }
   if (storeLinks.length) {
