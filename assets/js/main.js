@@ -6,6 +6,34 @@
 const PROJECTS_PER_PAGE = 6;
 const pageState = {}; // track current page per category
 let allCategories = []; // store for modal lookup
+let allHighlights = []; // store highlights for deep link lookup
+
+// Slugify a project title for URL hash
+function slugify(str) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+// Find a project by slug across highlights and all categories
+function findProjectBySlug(slug) {
+  for (const p of allHighlights) {
+    if (slugify(p.title) === slug) return p;
+  }
+  for (const cat of allCategories) {
+    for (const p of cat.projects) {
+      if (slugify(p.title) === slug) return p;
+    }
+  }
+  return null;
+}
+
+// Open modal from URL hash if present
+function openProjectFromHash() {
+  const hash = location.hash;
+  if (!hash.startsWith('#project=')) return;
+  const slug = decodeURIComponent(hash.replace('#project=', ''));
+  const project = findProjectBySlug(slug);
+  if (project) showProjectModal(project);
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
   // --- Load UI Config first (for loading screen) ---
@@ -98,7 +126,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (loadingScreen) loadingScreen.classList.add('hidden');
     // Start typing effect after loading screen fades
     setTimeout(() => initTypingEffect(config.hero, uiConfig.typing), startDelay);
+    // Open project modal from URL hash (deep link)
+    openProjectFromHash();
   }, 600);
+
+  // Handle browser back/forward with hash changes
+  window.addEventListener('hashchange', openProjectFromHash);
 });
 
 // --- Renderers ---
@@ -280,6 +313,7 @@ function renderSkillsPage(animate = true, direction = 'next') {
 // --- Latest Project (Featured) ---
 
 function renderHighlights(projects) {
+  allHighlights = projects;
   const container = document.getElementById('latestProject');
   if (!container || !projects || !projects.length) return;
 
@@ -647,6 +681,10 @@ const renderMetrics = (metrics) => {
 function showProjectModal(project) {
   document.getElementById('projectModalLabel').textContent = project.title;
 
+  // Update URL hash for deep linking
+  const projectSlug = slugify(project.title);
+  history.replaceState(null, '', '#project=' + projectSlug);
+
   let body = '';
 
   // Video embed or local
@@ -734,12 +772,14 @@ function showProjectModal(project) {
   const modal = new bootstrap.Modal(document.getElementById('projectModal'));
   modal.show();
 
-  // Stop video/iframe when modal closes
+  // Stop video/iframe when modal closes & clear hash
   document.getElementById('projectModal').addEventListener('hidden.bs.modal', () => {
     const iframe = document.querySelector('#projectModalBody iframe');
     if (iframe) iframe.src = '';
     const video = document.querySelector('#projectModalBody video');
     if (video) { video.pause(); video.currentTime = 0; }
+    // Clear hash without scrolling
+    history.replaceState(null, '', location.pathname + location.search);
   }, { once: true });
 }
 
