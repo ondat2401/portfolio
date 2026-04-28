@@ -32,7 +32,17 @@ function openProjectFromHash() {
   if (!hash.startsWith('#project=')) return;
   const slug = decodeURIComponent(hash.replace('#project=', ''));
   const project = findProjectBySlug(slug);
-  if (project) showProjectModal(project);
+  if (!project) return;
+
+  // Scroll to the project card/highlight first
+  const el = document.querySelector(`[data-slug="${slug}"]`);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Open modal after scroll settles
+    setTimeout(() => showProjectModal(project), 500);
+  } else {
+    showProjectModal(project);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -323,7 +333,7 @@ function renderHighlights(projects) {
     const reverse = i % 2 === 1 ? ' flex-row-reverse' : '';
 
     return `
-      <div class="highlight-item row align-items-center g-4 mb-5${reverse}" data-index="${i}">
+      <div class="highlight-item row align-items-center g-4 mb-5${reverse}" data-index="${i}" data-slug="${slugify(project.title)}">
         <div class="col-lg-7">
           <div class="latest-project-media ratio ratio-16x9" style="overflow: hidden; border-radius: 4px; border: 2px solid var(--color-primary); box-shadow: var(--glow-primary); position: relative;">
             ${project.image
@@ -461,7 +471,7 @@ function renderProjectPage(cat, animate = true, direction = 'next') {
     const isLocalVideo = hasVideo && !p.video.includes('youtube.com');
     return `
     <div class="col-lg-4 col-md-6">
-      <div class="card h-100 project-card" data-video="${hasVideo ? '1' : ''}">
+      <div class="card h-100 project-card" data-video="${hasVideo ? '1' : ''}" data-slug="${slugify(p.title)}">
         <div class="card-img-top project-thumb ratio ratio-16x9" style="position: relative; overflow: hidden;">
           ${p.image
             ? `<img src="${p.image}" alt="${p.title}" style="object-fit: cover;">`
