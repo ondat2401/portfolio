@@ -8,5 +8,5 @@
 - [x] Document asset names, orientation, budgets and build steps.
 - [x] Audit project references: 14 projects, 13 playable entries, 12 local playable paths exist, one external itch.io URL; no missing local file or skill-to-project reference.
 - [ ] Finish one isolated browser interaction pass and check every playable route; CUA stopped at its Windows URL safety check, and both Vite listeners stopped returning HTTP responses during route checks.
-- [ ] Review and push the intended site files to `origin/main`.
+- [x] Review and push the intended site files to `origin/main` (`30fe14e`).
 - [ ] Do not force shutdown while Blender shows a recovered arcade scene; preserve that session first.
