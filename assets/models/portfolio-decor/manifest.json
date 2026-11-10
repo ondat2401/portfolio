@@ -1,0 +1,29 @@
+{
+  "format": "glTF 2.0 binary",
+  "source": "Original procedural Blender models authored for this portfolio",
+  "palette": {
+    "paper": "#eee5d2",
+    "ink": "#191918",
+    "red": "#b34a40",
+    "gold": "#d9ad61"
+  },
+  "models": [
+    {
+      "root": "Cartridge_Root",
+      "section": "projects",
+      "interaction": "navigate to projects"
+    },
+    {
+      "root": "Logic_Core_Root",
+      "section": "skills",
+      "interaction": "navigate to skills"
+    },
+    {
+      "root": "Pixel_Mascot_Root",
+      "section": "about",
+      "interaction": "navigate to about"
+    }
+  ],
+  "triangles": 2872,
+  "glb_bytes": 252132
+}

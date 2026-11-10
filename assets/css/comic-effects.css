@@ -1,0 +1,78 @@
+﻿/* Artwork moves on separate layers; game footage and readable text stay steady. */
+:is(.comic-site,.comic-prototype) .hero-note{display:inline-block;position:relative;isolation:isolate;padding:13px 24px;color:#eee5d2;transform:rotate(-3deg)}
+.hero-note:before{content:'';position:absolute;inset:0;z-index:-1;background:url('../comic/ink-swipe.svg') center/100% 100% no-repeat}
+:is(.comic-site,.comic-prototype) .bubble{background:none;border:0;isolation:isolate;white-space:pre-line}
+:is(.comic-site,.comic-prototype) .bubble:before{content:'';position:absolute;inset:0;z-index:-1;background:url('../comic/bubble.svg') center/100% 100% no-repeat;pointer-events:none}
+:is(.comic-site,.comic-prototype) .cube-lettering{padding:24px 15px;background:none;color:#191918;font-size:25px;text-shadow:none;right:5px;top:144px;transform:rotate(13deg);isolation:isolate}
+.cube-lettering:before{content:'';position:absolute;inset:0;z-index:-1;background:url('../comic/doodle-spark.svg') center/100% 100% no-repeat}
+:is(.comic-site,.comic-prototype) .cube-controls{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:0 10px}
+:is(.comic-site,.comic-prototype) .cube-controls button{min-height:44px;padding:10px 12px;font-size:18px}
+:is(.comic-site,.comic-prototype) .cube-controls small{flex-basis:100%;margin-top:4px;letter-spacing:.06em}
+:is(.comic-site,.comic-prototype) .cube-controls [data-cube-transform]{background:#b34a40;color:#fff;border-color:#191918}
+:is(.comic-site,.comic-prototype) .stage-index:after{content:'';position:absolute;top:22px;right:-26px;width:92px;height:54px;background:url('../comic/doodle-arrow.svg') center/contain no-repeat;transform:rotate(7deg);pointer-events:none}
+:is(.comic-site,.comic-prototype) .stage{--panel-tilt:0deg}
+.comic-site .project-card:before,.comic-prototype .panel:after{content:'';position:absolute;inset:-22px;z-index:4;background:url('../comic/impact-lines.svg') center/100% 100% no-repeat;opacity:0;pointer-events:none}
+.comic-site .project-card:focus-within:before,.comic-prototype .panel:focus-within:after{opacity:.75}
+:is(.comic-site,.comic-prototype) footer{position:relative;margin-top:35px}
+:is(.comic-site,.comic-prototype) footer:before{content:'';position:absolute;left:0;right:0;top:-12px;height:8px;background:var(--red);clip-path:polygon(0 40%,8% 20%,14% 55%,25% 10%,32% 35%,46% 0,58% 45%,68% 15%,77% 50%,91% 15%,100% 35%,100% 65%,89% 45%,77% 85%,65% 55%,54% 100%,43% 60%,29% 80%,17% 65%,6% 85%,0 65%)}
+
+/* Cancel the legacy looping button bounce and large scroll translations. */
+.comic-site .project-card:hover .btn,.comic-site .loading-text{animation:none}
+.comic-site .scroll-reveal{opacity:1;transform:none;transition:none;will-change:auto}
+.comic-site .project-card:hover{transform:none}
+.comic-site .project-thumb img,.comic-site .latest-thumb,.comic-site .video-preview{transition:opacity .16s steps(2,end)}
+.comic-site .project-card:hover .project-thumb img,.comic-site .latest-project-media:hover .latest-thumb{opacity:1}
+.comic-site .project-card .card-body:before,.comic-prototype .caption:before{content:none}
+:is(.comic-site,.comic-prototype) :is(a,button):focus-visible{outline:3px solid var(--color-text,#eee5d2);outline-offset:5px}
+.comic-site .project-card :is(a,button):focus-visible{outline-color:var(--color-text)}
+:is(.comic-site,.comic-prototype) :is(.button,.btn,.filter-btn,.cube-controls button){transition:transform .14s steps(2,end),box-shadow .14s steps(2,end)}
+:is(.comic-site,.comic-prototype) :is(.button,.btn,.filter-btn,.cube-controls button):active{transform:translate(2px,2px);box-shadow:1px 1px #080808}
+
+@media(prefers-reduced-motion:no-preference){
+  :is(.comic-site,.comic-prototype) .stage:before{animation:comic-line-boil .72s steps(1,end) infinite}
+  :is(.comic-site,.comic-prototype) .bubble:before{animation:comic-bubble-ink .72s steps(1,end) infinite}
+  :is(.comic-site,.comic-prototype) .hero-note:before{transform-origin:left;animation:comic-ink-reveal .6s steps(7,end) both}
+  :is(.comic-site,.comic-prototype) .stage-index:after{animation:comic-arrow-draw .8s steps(8,end) .3s both}
+  .comic-site .section-title.ink-entered:after{transform-origin:left;animation:comic-ink-reveal .55s steps(6,end) both}
+  :is(.comic-site,.comic-prototype) .stage[data-cube-state="exploded"] .cube-lettering:before{animation:comic-spark .42s steps(5,end) both}
+  :is(.comic-site,.comic-prototype) .stage[data-cube-state="exploded"] .speed-lines{animation:comic-speed-punch .4s steps(4,end) both}
+  :is(.comic-site,.comic-prototype) .stage[data-cube-state="turning"] .speed-lines{animation:comic-speed-punch .85s steps(6,end) both}
+  :is(.comic-site,.comic-prototype) .stage[data-cube-state="transforming"] .speed-lines{animation:comic-speed-punch .6s steps(6,end) both}
+  :is(.comic-site,.comic-prototype) .stage[data-cube-state="assembling"] .cube-lettering:before{animation:comic-spark .42s steps(5,end) both}
+  :is(.comic-site,.comic-prototype) .stage[data-cube-state="settled"] .cube-lettering:before{animation:comic-settle .24s steps(3,end) both}
+  .comic-site .modal.fade .modal-dialog{transition:transform .24s steps(5,end);transform:translate(0,12px) rotate(-.6deg)}
+  .comic-site .modal.show .modal-dialog{transform:none}
+  @media(hover:hover){
+    .comic-site .project-card:is(:hover,:focus-within):after,.comic-site .highlight-item:is(:hover,:focus-within):before,.comic-prototype .panel:is(:hover,:focus-within):before{animation:comic-line-boil .6s steps(1,end) infinite}
+    .comic-site .project-card:hover:before,.comic-prototype .panel:hover:after{animation:comic-impact .4s steps(4,end) both}
+    :is(.comic-site,.comic-prototype) :is(.button,.btn,.cube-controls button):hover:not(:disabled){transform:translate(-1px,-2px);box-shadow:4px 5px #080808}
+  }
+}
+@keyframes comic-line-boil{
+  0%,100%{background-image:url('../comic/panel-frames.svg');background-size:100% 300%;background-position:center top}
+  33%{background-image:url('../comic/panel-frames.svg');background-size:100% 300%;background-position:center center}
+  66%{background-image:url('../comic/panel-frames.svg');background-size:100% 300%;background-position:center bottom}
+}
+@keyframes comic-bubble-ink{
+  0%,100%{background-image:url('../comic/bubble-frames.svg');background-size:100% 300%;background-position:center top}
+  33%{background-image:url('../comic/bubble-frames.svg');background-size:100% 300%;background-position:center center}
+  66%{background-image:url('../comic/bubble-frames.svg');background-size:100% 300%;background-position:center bottom}
+}
+@keyframes comic-impact{0%{opacity:0;transform:scale(.95)}25%{opacity:.8;transform:scale(1.02)}65%{opacity:.4}100%{opacity:0;transform:scale(1.04)}}
+@keyframes comic-spark{0%{transform:scale(.85) rotate(-8deg)}45%{transform:scale(1.2) rotate(6deg)}75%{transform:scale(.96)}100%{transform:scale(1)}}
+@keyframes comic-settle{0%{transform:scale(1.12,.9)}60%{transform:scale(.96,1.04)}100%{transform:scale(1)}}
+@keyframes comic-speed-punch{0%{opacity:.25;transform:scale(1.25,.85) rotate(-15deg)}35%{opacity:.75;transform:scale(1.45,.95) rotate(-12deg)}100%{opacity:.35;transform:scale(1.35,.9) rotate(-15deg)}}
+@keyframes comic-ink-reveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+@keyframes comic-arrow-draw{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+
+@media(max-width:650px){
+  .comic-site .project-card:before,.comic-prototype .panel:after{inset:-12px}
+  :is(.comic-site,.comic-prototype) .cube-lettering{top:145px;font-size:22px;padding:21px 12px}
+  :is(.comic-site,.comic-prototype) .stage-index:after{width:65px}
+}
+.motion-paused *,.motion-paused *:before,.motion-paused *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+@media(prefers-reduced-motion:reduce){
+  :is(.comic-site,.comic-prototype) .stage:before,.comic-prototype .panel:before{background-image:url('../comic/panel-frame.svg');border:0}
+  :is(.comic-site,.comic-prototype) *,:is(.comic-site,.comic-prototype) *:before,:is(.comic-site,.comic-prototype) *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  :is(.comic-site,.comic-prototype) :is(.button,.btn,.filter-btn,.cube-controls button):is(:hover,:active){transform:none}
+}

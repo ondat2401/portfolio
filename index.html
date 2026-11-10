@@ -28,6 +28,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/comic.css" rel="stylesheet">
+  <link href="assets/css/comic-effects.css" rel="stylesheet">
 
   <!-- FOUC Prevention: Apply saved theme before render -->
   <script>
@@ -40,7 +42,8 @@
     })();
   </script>
 </head>
-<body>
+<body class="comic-site">
+  <a class="skip-link" href="#projects">Skip to projects</a>
 
   <!-- Loading Screen -->
   <div class="loading-screen" id="loadingScreen">
@@ -51,10 +54,10 @@
   </div>
 
   <!-- Retro Scanline Overlay -->
-  <div class="scanline-overlay"></div>
+
 
   <!-- Particle Background -->
-  <canvas id="particleCanvas"></canvas>
+
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -84,6 +87,7 @@
           title="Chuyển đổi theme">
     <i class="bi bi-sun-fill"></i>
   </button>
+  <button class="motion-toggle" id="motionToggle" type="button" aria-pressed="false">Motion: on</button>
 
   <!-- Hero -->
   <section id="hero" class="hero-section d-flex align-items-center">
@@ -117,7 +121,8 @@
   <section id="skills" class="py-5 bg-light">
     <div class="container">
       <h2 class="section-title text-center mb-5 scroll-reveal" id="titleSkills"></h2>
-      <div class="row g-4 scroll-reveal-children" id="skillsSection"></div>
+      <p class="skills-intro">The tools behind the play.</p>
+      <div class="skills-workbench" id="skillsSection"></div>
     </div>
   </section>
 
@@ -178,5 +183,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/tracker.js"></script>
   <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/comic.js"></script>
 </body>
 </html>

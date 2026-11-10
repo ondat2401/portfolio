@@ -1,0 +1,28 @@
+.hero{display:grid;grid-template-columns:.85fr 1.15fr;gap:30px 28px;padding-top:16px}
+.hero-copy{padding:20px 0 0;position:relative}
+.eyebrow{font-size:11px;letter-spacing:2px;font-weight:700}
+.eyebrow span{display:inline-block;background:var(--red);padding:5px 9px;margin-right:10px;color:var(--paper)}
+.headline{background:var(--paper);color:var(--ink);padding:28px 25px 30px;margin:24px 0 18px;clip-path:polygon(1% 4%,8% 5%,7% 0,18% 3%,22% 0,28% 3%,96% 0,100% 89%,94% 90%,96% 96%,87% 95%,84% 100%,2% 97%);transform:rotate(-2deg);position:relative}
+.headline:after{content:'';position:absolute;inset:0;opacity:.18;background-image:radial-gradient(#191918 1px,transparent 1.5px);background-size:6px 6px;mask-image:linear-gradient(90deg,transparent 60%,black)}
+.hero h1{font:clamp(62px,7.3vw,112px)/.92 Bangers,Impact,sans-serif;margin:0;letter-spacing:1px}
+.hero h1 em{color:var(--red);font-style:normal}
+.intro{line-height:1.6;max-width:37ch;font-size:16px;color:#d0c8b8}
+.hero .button,.cube-controls button{display:inline-block;background:var(--paper);color:var(--ink);border:2px solid #080808;padding:13px 20px;font:23px Bangers;cursor:pointer;box-shadow:4px 4px 0 var(--red)}
+.hero-note{font:13px Bangers;letter-spacing:2px;margin-top:25px}
+.stage{position:relative;align-self:stretch;min-width:0;min-height:560px;border:7px solid var(--paper);background:#242522;box-shadow:7px 8px 0 #080808;isolation:isolate;margin:9px 5px 0 0}
+.stage:before{content:'';position:absolute;inset:-13px;background:url('../comic/panel-frame.svg') center/100% 100%;pointer-events:none;z-index:5}
+.stage:after{content:'';position:absolute;inset:0;z-index:-1;background-image:radial-gradient(#c8b58955 1.4px,transparent 1.8px);background-size:8px 8px;mask-image:radial-gradient(ellipse,transparent 25%,black)}
+.stage-index{position:absolute;top:12px;left:14px;font:11px Barlow;letter-spacing:2px}
+.bubble{position:absolute;top:46px;left:6%;width:240px;height:119px;padding:20px 18px 35px;background:url('../comic/bubble.svg') center/100% 100%;color:var(--ink);font:25px/1 Bangers;transform:rotate(-7deg);text-align:center;z-index:3;pointer-events:none}
+.speed-lines{position:absolute;inset:16%;z-index:-1;background:repeating-conic-gradient(from 10deg,#e8ddc8aa 0deg .8deg,transparent 1deg 28deg);mask-image:radial-gradient(ellipse,transparent 46%,black 65%,transparent 71%);transform:scale(1.35,.9) rotate(-15deg)}
+.cube-lettering{position:absolute;right:15px;top:130px;color:var(--paper);font:42px Bangers;transform:rotate(13deg);z-index:2;text-shadow:3px 3px #050505;pointer-events:none}
+#cube{width:100%;height:450px;margin-top:45px}
+#cube canvas{display:block;width:100%;height:100%}
+.cube-controls{text-align:center;position:relative;margin:-12px 0 0;z-index:2}
+.cube-controls button{font-size:20px;padding:10px 18px}
+.cube-controls small{display:block;font-size:9px;letter-spacing:2px;margin-top:13px}
+.cube-status{margin:16px 0 0;padding:12px;background:var(--paper);color:var(--ink);font:12px Barlow;font-weight:700;letter-spacing:1px;text-align:center}
+#fallback{padding:160px 0;font:35px Bangers;text-align:center}
+.hero-strip{grid-column:1/-1;border-top:2px solid var(--paper);border-bottom:2px solid var(--paper);padding:15px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;font:21px Bangers;letter-spacing:1px}
+.hero-strip span:before{content:'✦';color:var(--red);margin-right:16px}
+.hero-strip a{font:11px Barlow;letter-spacing:2px}

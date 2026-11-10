@@ -16,24 +16,53 @@
     { "icon": "📱", "label": "Playable Ads Built", "value": "50+" }
   ],
   "skills": [
-    { "icon": "bi-unity", "title": "Unity / C#", "desc": "Core game development, 2D/3D, optimization" },
-    { "icon": "bi-music-note-beamed", "title": "Rhythm Game Design", "desc": "Beat-sync systems, audio-driven gameplay" },
-    { "icon": "bi-phone", "title": "Mobile Optimization", "desc": "60fps targeting, object pooling, batching" },
-    { "icon": "bi-lightning", "title": "DOTween / Animation", "desc": "Tweening, Spine, procedural animation" },
-    { "icon": "bi-puzzle", "title": "Puzzle & Idle Design", "desc": "Economy balancing, progression curves" },
-    { "icon": "bi-bar-chart", "title": "Data-Driven Iteration", "desc": "A/B testing, CPI optimization, hypothesis testing" }
+    { "group": "build", "icon": "bi-unity", "title": "Unity / C#", "desc": "Core game development, 2D/3D, optimization" },
+    { "group": "feel", "icon": "bi-music-note-beamed", "title": "Rhythm Game Design", "desc": "Beat-sync systems, audio-driven gameplay" },
+    { "group": "ship", "icon": "bi-phone", "title": "Mobile Optimization", "desc": "60fps targeting, object pooling, batching" },
+    { "group": "feel", "icon": "bi-lightning", "title": "DOTween / Animation", "desc": "Tweening, Spine, procedural animation" },
+    { "group": "build", "icon": "bi-puzzle", "title": "Puzzle & Idle Design", "desc": "Economy balancing, progression curves" },
+    { "group": "ship", "icon": "bi-bar-chart", "title": "Data-Driven Iteration", "desc": "A/B testing, CPI optimization, hypothesis testing" }
+  ],
+  "skillGroups": [
+    {
+      "id": "build",
+      "title": "Build",
+      "description": "Turn a mechanic into a game worth coming back to.",
+      "project": "Cat Bus Jam: Seat Out"
+    },
+    {
+      "id": "feel",
+      "title": "Game Feel",
+      "description": "Make every tap, beat, and reaction feel connected.",
+      "project": "Magic Tile 3: Piano Music Game"
+    },
+    {
+      "id": "ship",
+      "title": "Ship & Improve",
+      "description": "Keep it light on mobile. Learn from what players do next.",
+      "project": "Cat Dash: Cute Cat Music Game"
+    }
   ],
   "timeline": [
     {
-      "period": "2025 - Present",
+      "period": "Sep 2026 - Present",
+      "role": "Mobile Game Developer",
+      "company": "Supercent Vietnam",
+      "logo": "assets/media/company-logos/supercent.png",
+      "desc": "Developing mobile games and Playable Ads with Unity and C#. Researching trends, shaping concepts, and building engaging games optimized for smooth play on mobile devices."
+    },
+    {
+      "period": "2025 - Oct 2026",
       "role": "Playable Ads Developer",
       "company": "Amanotes",
-      "desc": "Building playable ads for rhythm and casual games. Reduced CPI by 70% on Cat Dash. Created the company's first 3D rhythm playable."
+      "logo": "assets/media/company-logos/amanotes.png",
+      "desc": "Developed Unity/C# Playable Ads across rhythm and casual genres, researching trends and turning gameplay concepts into engaging ads. Contributed to creative ideation and content creation, prototyped quickly, and optimized performance for mobile devices. Helped deliver Amanotes' first 3D rhythm playable."
     },
     {
       "period": "2024 - 2025",
       "role": "Unity Game Developer",
-      "company": "Previous Company",
+      "company": "MOPA GAMES",
+      "logo": "assets/media/company-logos/mopa-games.png",
       "desc": "Developed and shipped mobile puzzle games including Cat Bus Jam and Pizza Mania on Google Play."
     }
   ],

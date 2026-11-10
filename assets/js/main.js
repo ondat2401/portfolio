@@ -92,10 +92,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderStats(profile.stats);
   setLoadProgress(60);
   renderAbout(profile.about);
-  renderSkills(profile.skills);
+  renderSkills(profile.skills, profile.skillGroups);
   setLoadProgress(70);
   renderHighlights(projects.highlights);
   renderProjectCategories(projects.projectCategories);
+  applyComicMediaRatios(document);
   setLoadProgress(80);
   renderTimeline(profile.timeline);
   renderFooter(site, profile.socials);
@@ -137,7 +138,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   initThemeToggle();
   initScrollReveal();
   initAnimatedCounters();
-  initSkillBarAnimations();
 
   setLoadProgress(100);
 
@@ -158,19 +158,40 @@ document.addEventListener('DOMContentLoaded', async () => {
 // --- Renderers ---
 
 function renderHero({ name, tagline, cta }, cvLink) {
-  document.getElementById('heroContent').innerHTML = `
-    <h1 class="display-3 fw-bold">Hi, I'm <span class="text-primary">${name}</span></h1>
-    <p class="lead mt-3"><span id="typingTarget"></span><span class="typing-cursor"></span></p>
-    <div class="d-flex gap-3 justify-content-center mt-4">
-      <a href="#projects" class="btn btn-primary btn-lg">${cta}</a>
-      ${cvLink ? `<a href="${cvLink}" target="_blank" class="btn btn-primary btn-lg">View CV</a>` : ''}
-    </div>
-    <div class="mt-5 rpg-stats-bar" id="statsBar"></div>
-    <div class="scroll-hint mt-4">
-      <span>Press ▼ to continue</span>
-      <div class="scroll-arrow"><i class="bi bi-chevron-double-down"></i></div>
-    </div>
-  `;
+  const container = document.getElementById('heroContent');
+  container.className = 'container hero';
+  container.innerHTML = `
+      <div class="hero-copy">
+        <div class="headline"><h1>GAME DEV.<br>GAMES THAT<br><em>FEEL ALIVE.</em></h1></div>
+        <p class="intro"></p>
+        <p class="hero-description">From a first tap to one more try. I build mobile games and playable ads with rhythm, character, and a feel for the details.</p>
+        <div class="hero-actions"><a class="button" href="#projects">View Projects</a><a class="hero-cv" target="_blank" rel="noopener">View CV ↗</a></div>
+        <p class="hero-note">UNITY / C# / PLAYABLE ADS</p>
+      </div>
+      <div class="stage arcade-stage">
+        <div class="stage-index" aria-hidden="true">A WORK IN PLAY</div>
+        <div id="cube" role="group" tabindex="0" aria-label="Playable arcade game. Choose Play to start or Stop to exit." aria-describedby="arcade-help"><p id="fallback">LOADING ARCADE…</p></div>
+        <div class="cube-controls"><button type="button" data-arcade-play aria-controls="cube" disabled>PLAY ▶</button><button type="button" data-arcade-stop aria-controls="cube" disabled>STOP ■</button><small id="arcade-help" class="arcade-help-icons"></small></div>
+        <p id="cube-status" class="cube-status" role="status" aria-live="polite">LOADING ARCADE</p>
+      </div>
+      <div id="statsBar" class="rpg-stats-bar"></div>
+      <div class="hero-strip"><span>THINK IT.</span><span>BUILD IT.</span><span>MAKE IT FEEL ALIVE.</span><a href="#projects">SCROLL TO PLAY ↓</a></div>
+    `;
+  const touchMode = matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
+  const help = container.querySelector('#arcade-help');
+  help.innerHTML = touchMode
+    ? `<span class="arcade-help-sr-only">Tap or press the red cabinet button to jump. Swipe down and hold, or press the gold cabinet button, to duck.</span>
+       <span class="arcade-help-group" aria-hidden="true"><svg viewBox="0 0 24 30"><rect x="3" y="1" width="18" height="28" rx="3"/><circle cx="12" cy="12" r="3"/><path d="M9 25h6"/></svg><i class="arcade-button-icon is-red"></i></span>
+       <span class="arcade-help-group" aria-hidden="true"><svg viewBox="0 0 24 30"><rect x="3" y="1" width="18" height="28" rx="3"/><path d="M12 7v13m-5-5 5 5 5-5M9 25h6"/></svg><i class="arcade-button-icon is-gold"></i></span>`
+    : `<span class="arcade-help-sr-only">Press Space or Up Arrow, or the red cabinet button, to jump. Hold Down Arrow or the gold cabinet button to duck.</span>
+       <span class="arcade-help-group" aria-hidden="true"><kbd>↑</kbd><i class="arcade-space-key"></i><i class="arcade-button-icon is-red"></i></span>
+       <span class="arcade-help-group" aria-hidden="true"><kbd>↓</kbd><i class="arcade-button-icon is-gold"></i></span>`;
+  const cv = container.querySelector('.hero-cv');
+  if (cvLink) cv.href = cvLink;
+  else cv.hidden = true;
+  container.querySelector('.intro').textContent = tagline;
+  container.querySelector('.button').textContent = cta || 'View Projects';
+  document.dispatchEvent(new Event('portfolio:hero-ready'));
 }
 
 function renderSectionTitles(titles) {
@@ -243,93 +264,41 @@ function renderAbout({ description, cvLink, avatar, avatarZoom, avatarOffsetX, a
   `;
 }
 
-const SKILLS_PER_PAGE = 9;
-let skillsPage = 0;
-let allSkills = [];
-
-function renderSkills(skills) {
-  allSkills = skills;
-  skillsPage = 0;
-
+function renderSkills(skills, groups) {
   const container = document.getElementById('skillsSection');
-  container.innerHTML = `
-    <div class="project-grid-wrapper">
-      <div class="row g-4 project-grid-inner" id="skillsGrid"></div>
-    </div>
-    <div class="d-flex justify-content-center align-items-center mt-4 gap-3" id="skillsPager"></div>
-  `;
+  container.replaceChildren();
 
-  renderSkillsPage(false);
-}
-
-function renderSkillsPage(animate = true, direction = 'next') {
-  const totalPages = Math.ceil(allSkills.length / SKILLS_PER_PAGE);
-  const start = skillsPage * SKILLS_PER_PAGE;
-  const items = allSkills.slice(start, start + SKILLS_PER_PAGE);
-  const grid = document.getElementById('skillsGrid');
-
-  const html = items.map((s) => {
-    return `
-    <div class="col-md-4">
-      <div class="skill-bar-card">
-        <div class="skill-bar-header">
-          <i class="bi ${s.icon}"></i>
-          <h5>${s.title}</h5>
-        </div>
-        <div class="skill-bar-desc">${s.desc}</div>
-        <div class="skill-bar-track">
-          <div class="skill-bar-fill" style="--target-width: 100%"></div>
-        </div>
+  for (const group of groups) {
+    const panel = document.createElement('article');
+    panel.className = 'toolkit-panel';
+    panel.dataset.skillGroup = group.id;
+    panel.innerHTML = `
+      <div class="toolkit-art" aria-hidden="true"></div>
+      <div class="toolkit-copy">
+        <h3 class="toolkit-title"></h3>
+        <p class="toolkit-description"></p>
+        <ul class="toolkit-skills"></ul>
+        <a class="toolkit-project"><span>In practice</span><strong></strong><span aria-hidden="true">↗</span></a>
       </div>
-    </div>
-  `}).join('');
-
-  if (animate) {
-    const outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
-    const inClass = direction === 'next' ? 'slide-in-left' : 'slide-in-right';
-    grid.classList.add(outClass);
-    setTimeout(() => {
-      grid.innerHTML = html;
-      grid.classList.remove(outClass);
-      grid.classList.add(inClass);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => grid.classList.remove(inClass));
-      });
-      // Re-trigger bar animations
-      setTimeout(() => initSkillBarAnimations(), 100);
-    }, 350);
-  } else {
-    grid.innerHTML = html;
-    requestAnimationFrame(() => {
-      grid.closest('.project-grid-wrapper').style.minHeight = grid.offsetHeight + 'px';
-    });
+    `;
+    panel.querySelector('.toolkit-title').textContent = group.title;
+    panel.querySelector('.toolkit-description').textContent = group.description;
+    const list = panel.querySelector('.toolkit-skills');
+    for (const skill of skills.filter(skill => (skill.group || 'build') === group.id)) {
+      const item = document.createElement('li');
+      const name = document.createElement('strong');
+      const description = document.createElement('span');
+      name.textContent = skill.title;
+      description.textContent = skill.desc;
+      item.append(name, description);
+      list.append(item);
+    }
+    const link = panel.querySelector('.toolkit-project');
+    link.href = '#project=' + slugify(group.project);
+    link.querySelector('strong').textContent = group.project;
+    container.append(panel);
   }
-
-  const pager = document.getElementById('skillsPager');
-  if (totalPages <= 1) {
-    pager.innerHTML = '';
-    return;
-  }
-
-  pager.innerHTML = `
-    <button class="btn btn-outline-primary btn-sm" ${skillsPage === 0 ? 'disabled' : ''} data-dir="prev">
-      <i class="bi bi-chevron-left"></i> Prev
-    </button>
-    <span class="text-muted">${skillsPage + 1} / ${totalPages}</span>
-    <button class="btn btn-outline-primary btn-sm" ${skillsPage >= totalPages - 1 ? 'disabled' : ''} data-dir="next">
-      Next <i class="bi bi-chevron-right"></i>
-    </button>
-  `;
-
-  pager.querySelectorAll('button').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const dir = btn.dataset.dir;
-      skillsPage += dir === 'next' ? 1 : -1;
-      renderSkillsPage(true, dir);
-    });
-  });
 }
-
 // --- Latest Project (Featured) ---
 
 function renderHighlights(projects) {
@@ -388,20 +357,20 @@ function renderHighlights(projects) {
 
     if (media && preview) {
       media.addEventListener('mouseenter', () => {
-        if (video) { video.currentTime = 0; video.play(); }
+        if (video) { video.currentTime = 0; video.play().catch(() => preview.classList.remove('active')); }
         const iframe = preview.querySelector('iframe[data-src]');
         if (iframe) {
           const sep = iframe.dataset.src.includes('?') ? '&' : '?';
           iframe.src = iframe.dataset.src + sep + 'autoplay=1&mute=1';
         }
-        requestAnimationFrame(() => preview.classList.add('active'));
+        preview.classList.add('active');
       });
 
       media.addEventListener('mouseleave', () => {
         preview.classList.remove('active');
         if (video) video.pause();
         const iframe = preview.querySelector('iframe');
-        if (iframe) iframe.src = '';
+        if (iframe) iframe.src = 'about:blank';
       });
     }
 
@@ -426,14 +395,18 @@ function renderProjectCategories(categories) {
   const filterBar = document.getElementById('projectFilterBar');
   if (filterBar && categories.length > 1) {
     filterBar.innerHTML = `
-      <button class="filter-btn active" data-filter="all">All</button>
-      ${categories.map(cat => `<button class="filter-btn" data-filter="${cat.id}">${cat.label}</button>`).join('')}
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      ${categories.map(cat => `<button class="filter-btn" data-filter="${cat.id}" aria-pressed="false">${cat.label}</button>`).join('')}
     `;
 
     filterBar.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        filterBar.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         const filter = btn.dataset.filter;
 
         container.querySelectorAll('.project-category').forEach(catEl => {
@@ -512,6 +485,8 @@ function renderProjectPage(cat, animate = true, direction = 'next') {
 
   const updateGrid = () => {
     grid.innerHTML = cardsHTML;
+    applyComicMediaRatios(grid);
+    document.dispatchEvent(new Event('portfolio:projects-rendered'));
 
     // Bind video hover preview
     grid.querySelectorAll('.project-card[data-video="1"]').forEach((card) => {
@@ -525,19 +500,19 @@ function renderProjectPage(cat, animate = true, direction = 'next') {
         preview.style.display = 'block';
         if (video) {
           video.currentTime = 0;
-          video.play();
+          video.play().catch(() => preview.classList.remove('active'));
         }
         if (iframe) {
           const sep = iframe.dataset.src.includes('?') ? '&' : '?';
           iframe.src = iframe.dataset.src + sep + 'autoplay=1&mute=1';
         }
-        requestAnimationFrame(() => preview.classList.add('active'));
+        preview.classList.add('active');
       });
 
       card.addEventListener('mouseleave', () => {
         preview.classList.remove('active');
         if (video) video.pause();
-        if (iframe) iframe.src = '';
+        if (iframe) iframe.src = 'about:blank';
       });
     });
 
@@ -836,8 +811,17 @@ function renderTimeline(timeline) {
       <div class="timeline-dot"></div>
       <div class="timeline-card">
         <span class="timeline-period">${t.period}</span>
-        <h5 class="timeline-role">${t.role}</h5>
-        <span class="timeline-company">${t.company}</span>
+        <div class="timeline-brand">
+          ${t.logo ? `
+            <div class="timeline-logo-frame" data-company="${t.company}" aria-hidden="true">
+              <img src="${t.logo}" alt="" loading="lazy" decoding="async">
+            </div>
+          ` : ''}
+          <div class="timeline-brand-copy">
+            <span class="timeline-company">${t.company}</span>
+            <h5 class="timeline-role">${t.role}</h5>
+          </div>
+        </div>
         <p class="timeline-desc">${t.desc}</p>
       </div>
     </div>
@@ -1057,6 +1041,11 @@ function closeModalAndPlay(btn) {
   const files = JSON.parse(btn.dataset.files);
   const title = btn.dataset.title;
   const modal = bootstrap.Modal.getInstance(document.getElementById('projectModal'));
+  if (files.length && files.every(file => /^https?:\/\//i.test(file))) {
+    window.open(files[0], '_blank', 'noopener,noreferrer');
+    if (modal) modal.hide();
+    return;
+  }
   if (modal) modal.hide();
   setTimeout(() => openPlayable({ playableFiles: files, title }), 300);
 }
@@ -1069,7 +1058,7 @@ function openPlayable(project) {
   const localFiles = files.filter(f => !f.startsWith('http://') && !f.startsWith('https://'));
   if (localFiles.length === 0) {
     const randomFile = files[Math.floor(Math.random() * files.length)];
-    window.open(randomFile, '_blank');
+    window.open(randomFile, '_blank', 'noopener,noreferrer');
     return;
   }
 
@@ -1097,7 +1086,7 @@ function loadPlayableAtIndex(index) {
   const file = currentPlayableFiles[index];
   if (!file) return;
   if (file.startsWith('http://') || file.startsWith('https://')) {
-    window.open(file, '_blank');
+    window.open(file, '_blank', 'noopener,noreferrer');
     return;
   }
   const frame = document.getElementById('playableFrame');
@@ -1269,24 +1258,6 @@ function initAnimatedCounters() {
   counters.forEach(c => observer.observe(c));
 }
 
-// --- Skill Bar Animations ---
-
-function initSkillBarAnimations() {
-  const bars = document.querySelectorAll('.skill-bar-fill:not(.animated)');
-  if (!bars.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animated');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  bars.forEach(bar => observer.observe(bar));
-}
-
 // --- Scroll Reveal (storytelling scroll) ---
 
 function initScrollReveal() {
@@ -1323,4 +1294,23 @@ function initScrollReveal() {
   });
 
   mutationObs.observe(document.body, { childList: true, subtree: true });
+}
+
+// Measure video itself: poster dimensions can differ from the actual preview.
+function applyComicMediaRatios(container) {
+  container.querySelectorAll('.project-thumb video, .latest-project-media video').forEach(video => {
+    const apply = () => {
+      if (!video.videoWidth || !video.videoHeight) return;
+      const media = video.closest('.project-thumb, .latest-project-media');
+      media.style.setProperty('--bs-aspect-ratio', (video.videoHeight / video.videoWidth * 100) + '%');
+      media.classList.toggle('is-portrait', video.videoHeight > video.videoWidth);
+      const showFrame = () => media.classList.add('has-video-frame');
+      if (video.readyState >= 2) showFrame();
+      else video.addEventListener('loadeddata', showFrame, { once: true });
+      media.closest('.highlight-item')?.classList.toggle('has-portrait', video.videoHeight > video.videoWidth);
+      document.dispatchEvent(new Event('portfolio:media-ready'));
+    };
+    if (video.readyState >= 1) apply();
+    else video.addEventListener('loadedmetadata', apply, { once: true });
+  });
 }

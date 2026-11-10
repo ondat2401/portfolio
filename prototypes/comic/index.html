@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>On Thanh Dat — Playable Worlds</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../../assets/css/comic-effects.css">
+</head>
+<body class="comic-prototype">
+  <header>
+    <a class="wordmark" href="#">ON THANH DAT<span>GAME DEVELOPER / ISSUE 01</span></a>
+    <nav aria-label="Main navigation"><a href="#work">GAMES</a><a href="#about">ABOUT</a><a href="../../assets/media/CV.pdf">VIEW CV ↗</a></nav>
+  </header>
+  <main>
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-copy">
+        <p class="eyebrow"><span>01</span> FROM IDEA TO PLAYABLE</p>
+        <div class="headline"><h1>PLAYABLE<br>WORLDS.<br><em>REAL FEEL.</em></h1></div>
+        <p class="intro">I'm Dat. A Unity developer crafting mobile games and playable ads — with a feel-first approach.</p>
+        <a class="button" href="#work">ENTER MY WORLDS ↘</a>
+        <p class="hero-note">UNITY / C# / PLAYABLE ADS</p>
+      </div>
+      <div class="stage">
+        <div class="stage-index" aria-hidden="true">FIG. 01 — A WORK IN PLAY</div>
+        <div class="speed-lines" aria-hidden="true"></div>
+        <div class="bubble" aria-hidden="true">A LITTLE CHAOS.<br>A LOT OF CRAFT.</div>
+        <div class="cube-lettering" aria-hidden="true">TWIST!</div>
+        <div id="cube" role="img" aria-label="54 comic bricks transforming between a Rubik cube, gamepad and robot"><p id="fallback">BUILD. PLAY. REPEAT.</p></div>
+        <div class="cube-controls"><button type="button" data-cube-transform aria-controls="cube" aria-label="Transform into Gamepad">TRANSFORM ↻</button><button type="button" id="explode" aria-controls="cube" aria-pressed="false">BREAK APART ↗</button><small>HOVER TO EXPLORE · TAP TO TRANSFORM</small></div>
+        <p id="cube-status" class="cube-status">SCRAMBLE / HOLD THAT FRAME</p>
+      </div>
+      <div class="hero-strip"><span>THINK IT.</span><span>BUILD IT.</span><span>MAKE IT FEEL ALIVE.</span><a href="#work">SCROLL TO PLAY ↓</a></div>
+    </section>
+    <section id="work">
+      <div class="section-heading"><div><p class="eyebrow">02 / THE GOOD STUFF</p><h2>SELECTED WORK</h2></div><span>REAL GAMES.<br>PRESS PLAY.</span></div>
+      <div id="filters" class="project-filters" role="group" aria-label="Filter projects"></div>
+      <div id="projects"></div>
+    </section>
+    <section id="about" class="profile-section">
+      <div class="section-heading"><div><p class="eyebrow">03 / BEHIND THE PANELS</p><h2>THE MAKER.</h2></div><span>CODE.<br>CRAFT.<br>REPEAT.</span></div>
+      <div class="profile-layout">
+        <div class="profile-copy"><h3>ON THANH DAT</h3><p id="about-description"></p><a class="button" href="../../assets/media/CV.pdf">READ MY CV ↗</a></div>
+        <ul id="skills-list" class="skills-list" aria-label="Skills"></ul>
+      </div>
+      <div class="section-heading"><div><p class="eyebrow">04 / THE STORY SO FAR</p><h2>EXPERIENCE</h2></div></div>
+      <div id="experience-list" class="experience-list"></div>
+    </section>
+    <footer><span>ON THANH DAT / UNITY · MOBILE GAMES · PLAYABLE ADS</span><a href="https://github.com/ondat24" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="#">BACK TO TOP ↑</a></footer>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

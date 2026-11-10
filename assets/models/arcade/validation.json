@@ -1,0 +1,12 @@
+{
+  "roundtrip": "PASS",
+  "mesh_objects": 16,
+  "triangles": 14484,
+  "dimensions_blender_m": [
+    1.4240000247955322,
+    1.0889999866485596,
+    2.3899998664855957
+  ],
+  "glb_bytes": 1070032,
+  "lettering": "Body labels removed; flat faded Bangers marquee"
+}
