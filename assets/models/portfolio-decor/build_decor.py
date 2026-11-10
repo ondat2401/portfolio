@@ -22,6 +22,8 @@ scene.collection.children.link(studio)
 def material(name, color, metallic=0.0, roughness=0.62):
     mat = bpy.data.materials.new(name)
     mat.diffuse_color = (*color, 1)
+    if mat.node_tree is None:
+        mat.use_nodes = True
     shader = next(node for node in mat.node_tree.nodes if node.type == "BSDF_PRINCIPLED")
     shader.inputs["Base Color"].default_value = (*color, 1)
     shader.inputs["Metallic"].default_value = metallic
@@ -61,6 +63,21 @@ def box(name, location, dimensions, mat, bevel=0.025):
         bpy.context.view_layer.objects.active = obj
         bpy.ops.object.modifier_apply(modifier=edge.name)
     obj.data.materials.append(mat)
+    return link_asset(obj)
+
+
+def triangle_prism(name, location, width, height, depth, mat):
+    half_width, half_height, half_depth = width / 2, height / 2, depth / 2
+    vertices = [
+        (-half_width, -half_depth, -half_height), (half_width, -half_depth, -half_height), (0, -half_depth, half_height),
+        (-half_width, half_depth, -half_height), (half_width, half_depth, -half_height), (0, half_depth, half_height),
+    ]
+    faces = [(0, 1, 2), (5, 4, 3), (0, 3, 4, 1), (1, 4, 5, 2), (2, 5, 3, 0)]
+    mesh = bpy.data.meshes.new(name)
+    mesh.from_pydata(vertices, [], faces)
+    mesh.materials.append(mat)
+    obj = bpy.data.objects.new(name, mesh)
+    obj.location = location
     return link_asset(obj)
 
 
@@ -130,14 +147,20 @@ for x_dot, y_dot in [(-0.26, -0.2), (0.26, -0.2), (-0.26, 0.2), (0.26, 0.2)]:
 root.location.x = x
 models.append(root)
 
-# Pixel mascot: squared robot silhouette, dark visor, gold eyes and a small antenna.
+# Pixel mascot: a compact arcade cat with simple faceted ears and a readable visor face.
 root, x = new_model("Pixel_Mascot_Root", "Pixel mascot / about", 1.55)
 box("Mascot / chassis", (0, 0, -0.015), (0.62, 0.4, 0.68), ink, 0.075)
 box("Mascot / red shell", (0, -0.205, -0.015), (0.54, 0.045, 0.6), red, 0.05)
+for side in (-1, 1):
+    triangle_prism("Mascot / ink ear", (side * 0.16, -0.12, 0.38), 0.18, 0.21, 0.2, ink)
+    triangle_prism("Mascot / gold ear", (side * 0.16, -0.23, 0.375), 0.09, 0.12, 0.025, gold)
 box("Mascot / visor rim", (0, -0.235, 0.07), (0.43, 0.035, 0.31), paper, 0.035)
 box("Mascot / visor", (0, -0.257, 0.07), (0.36, 0.025, 0.245), dark, 0.026)
 for eye_x in (-0.105, 0.105):
-    box("Mascot / eye", (eye_x, -0.276, 0.095), (0.055, 0.018, 0.075), gold, 0.004)
+    box("Mascot / eye", (eye_x, -0.276, 0.095), (0.065, 0.018, 0.08), gold, 0.004)
+for side in (-1, 1):
+    box("Mascot / whisker", (side * 0.14, -0.276, 0.005), (0.055, 0.018, 0.014), paper, 0.002)
+box("Mascot / pixel nose", (0, -0.281, 0.035), (0.035, 0.014, 0.03), gold, 0.003)
 box("Mascot / mouth", (0, -0.276, -0.015), (0.09, 0.018, 0.025), paper, 0.004)
 box("Mascot / chest badge", (0, -0.238, -0.2), (0.15, 0.025, 0.09), ink, 0.012)
 box("Mascot / badge pixel", (0, -0.254, -0.2), (0.065, 0.014, 0.04), gold, 0.004)
@@ -146,9 +169,6 @@ for side in (-1, 1):
     box("Mascot / hand", (side * 0.47, -0.025, -0.01), (0.105, 0.23, 0.14), gold, 0.027)
     box("Mascot / leg", (side * 0.16, 0, -0.41), (0.15, 0.25, 0.18), ink, 0.025)
     box("Mascot / boot", (side * 0.16, -0.045, -0.52), (0.21, 0.33, 0.11), paper, 0.02)
-cylinder("Mascot / antenna base", (0, 0, 0.37), 0.075, 0.08, ink, vertices=8)
-cylinder("Mascot / antenna", (0, 0, 0.47), 0.035, 0.18, gold, vertices=8)
-ico("Mascot / beacon", (0, 0, 0.59), 0.07, red, subdivisions=1)
 root.location.x = x
 models.append(root)
 

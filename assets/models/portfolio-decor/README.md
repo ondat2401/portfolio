@@ -1,6 +1,6 @@
 # Portfolio decorative models
 
-Original Blender assets for the comic arcade portfolio. The family contains a game cartridge for Projects, a logic core for Skills and a pixel mascot for About. Their 3D pivots are centered; runtime section positions come from the DOM. The front faces follow the arcade's Blender convention (front `-Y`, up `+Z`); the exported glTF is Y-up.
+Original Blender assets for the comic arcade portfolio. The family contains a game cartridge for Projects, a logic core for Skills and a small pixel cat mascot for About. Their 3D pivots are centered; runtime section positions come from the DOM. The front faces follow the arcade's Blender convention (front `-Y`, up `+Z`); the exported glTF is Y-up.
 
 ## Files
 
