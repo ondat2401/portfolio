@@ -1,6 +1,5 @@
 import { mountArcade } from './features/hero-arcade.js';
 import { layoutComicPanels } from './features/comic-panels.js';
-import { mountPortfolioDecor } from './features/portfolio-decor.js';
 
 let mounted = false;
 function mountHero() {
@@ -20,7 +19,6 @@ function layoutProjects() {
 document.addEventListener('portfolio:projects-rendered', layoutProjects);
 document.addEventListener('portfolio:media-ready', layoutProjects);
 layoutProjects();
-mountPortfolioDecor();
 
 const motionButton = document.querySelector('#motionToggle');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
