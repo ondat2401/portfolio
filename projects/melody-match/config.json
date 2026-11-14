@@ -1,13 +1,34 @@
 {
   "id": "melody-match",
   "title": "Melody Match: Good Sort Puzzle",
-  "desc": "A satisfying good-sort puzzle where each correct sort unlocks a new music stem, building a full track as you clear the board.",
+  "desc": "A sorting playable where completed color groups unlock musical stems, turning puzzle progress into a soundtrack.",
   "detail": "A color-sorting puzzle game with a musical twist — every time you correctly sort a group, a new instrument stem (drums, bass, melody, vocals) layers into the soundtrack, turning each level into a progressive music-building experience.<br><br>Role: Solo Playable Developer<br>Implemented core good-sort mechanics (tap to pick, tap to place, stack validation) with smooth animations and clear visual feedback for valid/invalid moves. Built a stem-unlock audio system where each completed color group triggers a new audio layer, giving players an immediate musical reward on top of the puzzle satisfaction. Designed levels with increasing container counts and color complexity, paced so that stem reveals align with moments of peak player engagement.<br><br>Optimized audio layering with seamless looping and crossfade transitions so stems blend naturally regardless of solve order. Kept total build size minimal through compressed audio stems and lightweight shaders while maintaining a stable 60fps on mobile.<br><br>Created as a playable ad to showcase the game's unique sort-to-music loop, combining casual puzzle accessibility with audio-driven reward feedback.",
   "image": "projects/melody-match/thumbnail.jpg",
   "video": "projects/melody-match/preview.mp4",
-  "tech": ["Unity", "C#", "Puzzle", "Audio Stem", "DOTween", "Luna", "Particles"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Puzzle",
+    "Audio Stem",
+    "DOTween",
+    "Luna",
+    "Particles"
+  ],
   "playStore": "https://play.google.com/store/apps/details?id=com.ngd.melodymatch&hl=en",
   "appStore": "",
   "playable": true,
-  "playableFiles": ["projects/melody-match/playable.html"]
+  "playableFiles": [
+    "projects/melody-match/playable.html"
+  ],
+  "role": "Solo Playable Developer",
+  "focus": "Puzzle validation · Audio stems",
+  "scope": "Playable ad development; original product by its respective team.",
+  "caseStudy": {
+    "challenge": "Reward each solved group with an immediate musical change, regardless of solve order.",
+    "contributions": [
+      "Implemented pick/place interactions, stack validation, and move feedback.",
+      "Built stem unlocking with seamless loops and crossfades.",
+      "Paced levels around musical reveals and compressed stems for delivery."
+    ]
+  }
 }

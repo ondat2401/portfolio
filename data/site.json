@@ -1,15 +1,15 @@
 {
-  "title": "Ôn Thành Đạt — Portfolio",
-  "description": "Game Developer & Playable Ads Specialist",
+  "title": "On Thanh Dat | Unity Developer & Playable Ads",
+  "description": "Unity/C# developer building mobile games and playable ads. Explore playable work, technical contributions, and case studies in rhythm gameplay, puzzle systems, and creative testing.",
   "url": "",
   "ogImage": "",
   "favicon": "assets/media/favicon.svg",
-  "copyright": "2025 Ôn Thành Đạt. All rights reserved.",
+  "copyright": "2026 On Thanh Dat. All rights reserved.",
   "sectionTitles": {
-    "highlights": "✨ Highlights",
-    "about": "About Me",
-    "skills": "Skills",
-    "projects": "Projects",
-    "experience": "Experience"
+    "highlights": "Selected work. Real decisions.",
+    "about": "The developer behind the games",
+    "skills": "How I build",
+    "projects": "More work, ready to play",
+    "experience": "Where I’ve built"
   }
 }

@@ -1,15 +1,39 @@
 {
   "id": "tile-hop",
   "title": "Tile Hope: Music Ball Clash",
-  "desc": "Short description.",
+  "desc": "A music-driven ball-hopping playable with beatmap-based levels, responsive drag controls, and mobile-focused rendering.",
   "detail": "A fast-paced 3D rhythm music game where you drag to guide a bouncing ball across glowing tiles, chaining hops to the beat while avoiding gaps and off-path falls.<br><br>Role: Solo Playable Developer<br>Implemented beat-synced tile spawning based on BPM and precomputed beat maps, with dynamic patterns, speed scaling, and visual effects all driven by the music timeline. Built responsive drag controls, camera follow, and assist features (auto-aim tolerance, coyote time) to keep the game feel tight even at high speeds. Optimized object pooling, mesh batching, and lightweight shaders to keep memory usage low and maintain a smooth 60fps on a wide range of Android devices, even with longer tracks.<br><br>Created as a portfolio project to showcase rhythm-game design, audio-driven level generation, and mobile-ready performance optimization..",
   "image": "projects/tile-hop/thumbnail.png",
   "video": "projects/tile-hop/preview.mp4",
-  "tech": ["Unity", "C#", "Rhythm", "URP", "DOTween", "Luna", "Particles"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Rhythm",
+    "URP",
+    "DOTween",
+    "Luna",
+    "Particles"
+  ],
   "playStore": "https://play.google.com/store/apps/details?id=com.amanotes.beathopper&hl=en",
   "appStore": "https://apps.apple.com/us/app/tiles-hop-music-ball-clash/id1344702806",
   "playable": true,
-  "playableFiles": ["projects/tile-hop/playable-1.html", "projects/tile-hop/playable-2.html"],
-  "duration": { "from": "2025-02", "to": "2025-05" },
-  "role": "Solo Playable Developer"
+  "playableFiles": [
+    "projects/tile-hop/playable-1.html",
+    "projects/tile-hop/playable-2.html"
+  ],
+  "duration": {
+    "from": "2025-02",
+    "to": "2025-05"
+  },
+  "role": "Solo Playable Developer",
+  "focus": "Beatmaps · Mobile controls",
+  "scope": "Playable ad development; original product by its respective team.",
+  "caseStudy": {
+    "challenge": "Keep fast, beat-aligned movement readable and forgiving on a touch screen.",
+    "contributions": [
+      "Implemented tile spawning and patterns driven by BPM and precomputed beatmaps.",
+      "Tuned drag controls, camera follow, and assist tolerances.",
+      "Used pooling, mesh batching, and lightweight shaders to control rendering cost."
+    ]
+  }
 }

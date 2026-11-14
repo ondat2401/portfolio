@@ -1,11 +1,31 @@
 {
   "id": "pizza-mania",
   "title": "Pizza Mania: Slice Sort",
-  "desc": "A cozy food-themed puzzle where you sort colorful pizza slices onto matching plates to complete perfect pies.",
+  "desc": "A mobile sorting puzzle with drag-and-drop controls, move limits, and configurable level progression.",
   "detail": "A casual slice-sorting puzzle game where you drag and stack pizza slices onto matching plates, planning each move to group identical toppings and complete full pizzas with the fewest moves possible. Levels gradually introduce more toppings, plates, and trickier layouts, turning a simple mechanic into a satisfying, brain-teasing experience.<br><br> Role: Solo Developer<br> Designed and implemented core slice-sorting mechanics with drag-and-drop interactions, limited-move challenges, and undo/hint systems to keep the game accessible while rewarding smart planning. Built a flexible level system supporting handcrafted and pattern-based layouts, plus progressive difficulty tuning. Optimized object pooling, sprite atlases, and lightweight UI transitions to maintain smooth performance and quick level reloads on a wide range of Android devices.<br><br> Created as a portfolio project to showcase mobile puzzle design, tactile drag-based interactions, and efficient 2D performance optimization in a casual, food-themed setting.",
   "image": "projects/pizza-mania/thumbnail.png",
   "video": "projects/pizza-mania/preview.mp4",
-  "tech": ["Unity", "C#", "Puzzle", "3D Shader", "DOTween", "SDK", "FireBase"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Puzzle",
+    "3D Shader",
+    "DOTween",
+    "SDK",
+    "FireBase"
+  ],
   "playStore": "https://pizza-mania-slice-sort.en.softonic.com/android",
-  "appStore": ""
+  "appStore": "",
+  "role": "Solo Developer",
+  "focus": "Puzzle design · Level systems",
+  "scope": "Mobile game development",
+  "caseStudy": {
+    "challenge": "Turn a simple sorting interaction into readable, progressively challenging levels.",
+    "contributions": [
+      "Implemented sorting rules, drag-and-drop interactions, and move-limited challenges.",
+      "Built undo/hint support and configurable level layouts.",
+      "Tuned difficulty, pooled objects, and optimized UI transitions."
+    ]
+  },
+  "storeLabel": "Android listing"
 }

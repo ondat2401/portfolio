@@ -1,13 +1,34 @@
 {
   "id": "magic-tile-3",
   "title": "Magic Tile 3: Piano Music Game",
-  "desc": "Short description.",
+  "desc": "A piano rhythm playable built around configurable hit windows, combo scoring, and synchronized feedback.",
   "detail": "A fast-paced piano tiles rhythm game where you tap and hold black tiles while avoiding empty spaces, chaining notes to the beat to complete each song with high accuracy and combos.<br><br> Role: Playable Developer<br> Implemented a timing-accurate input system with configurable hit windows (perfect/great/late/miss), combo and multiplier logic, and real-time score calculation. Built a song/level system that maps audio tracks to tile patterns, supports variable speeds and difficulty, and compensates for audio latency on different devices. Added visual and haptic feedback for hits and misses to keep the experience responsive and satisfying. Optimized tile pooling, UI rendering, and audio loading to maintain a smooth 60fps and short loading times on mobile.<br><br> Created as a portfolio project to demonstrate rhythm-game mechanics, audio–input synchronization, and mobile performance optimization for popular piano music gameplay.",
   "image": "projects/magic-tile-3/thumbnail.jpg",
   "video": "projects/magic-tile-3/preview.mp4",
-  "tech": ["Unity", "C#", "Rhythm", "2D Shader", "DOTween", "Luna", "Particles"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Rhythm",
+    "2D Shader",
+    "DOTween",
+    "Luna",
+    "Particles"
+  ],
   "playStore": "https://play.google.com/store/apps/details?id=com.youmusic.magictiles&hl=en",
   "appStore": "https://apps.apple.com/us/app/magic-tiles-3-piano-game/id1443446174",
   "playable": true,
-  "playableFiles": ["projects/magic-tile-3/playable.html"]
+  "playableFiles": [
+    "projects/magic-tile-3/playable.html"
+  ],
+  "role": "Playable Developer",
+  "focus": "Input timing · Audio sync",
+  "scope": "Playable ad development; original product by its respective team.",
+  "caseStudy": {
+    "challenge": "Make taps and holds feel responsive while keeping scoring aligned with the song.",
+    "contributions": [
+      "Implemented configurable hit windows, combo rules, and real-time scoring.",
+      "Mapped song timelines to tile patterns, speed, and difficulty.",
+      "Optimized tile reuse, UI rendering, and audio loading for mobile delivery."
+    ]
+  }
 }

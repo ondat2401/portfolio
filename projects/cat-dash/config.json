@@ -1,30 +1,97 @@
 {
   "id": "cat-dash",
   "title": "Cat Dash: Cute Cat Music Game",
-  "desc": "A 2D rhythm platformer where every move syncs with the music.",
+  "desc": "A rhythm playable that connects responsive controls, wordless onboarding, and creative testing to acquisition results.",
   "detail": "A fast-paced 2D rhythm platformer where a reckless cat dashes, jumps, and wall-slides through tight obstacle courses, with every action locked to the beat.<br><br>Role: Solo Playable Developer<br>Built a beat-synced gameplay framework that drives obstacles, traps, and camera feedback directly from the music timeline. Implemented lightweight audio analysis and beat-marking tools for level design, plus responsive dash/jump controls with coyote time and input buffering for a tight, game-feel-first experience. Optimized object pooling and sprite batching to maintain a stable 60fps target on mobile devices.<br><br>Created as a polished portfolio project to showcase rhythm-based gameplay design, technical implementation of music sync, and mobile-ready performance",
   "image": "projects/cat-dash/thumbnail.png",
   "video": "projects/cat-dash/preview.mp4",
-  "tech": ["Unity", "C#", "Luna", "Spine", "DOTween", "Physics 2D", "Particles", "Tile Map"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Luna",
+    "Spine",
+    "DOTween",
+    "Physics 2D",
+    "Particles",
+    "Tile Map"
+  ],
   "playStore": "https://play.google.com/store/apps/details?id=com.musicgame.catdashgame&hl=en",
   "appStore": "https://apps.apple.com/us/app/cat-dash-cute-cat-music-game/id6745498566",
   "playable": true,
-  "playableFiles": ["projects/cat-dash/playable.html"],
-  "duration": { "from": "2025-01", "to": "Present" },
+  "playableFiles": [
+    "projects/cat-dash/playable.html"
+  ],
+  "duration": {
+    "from": "2025-01",
+    "to": "Present"
+  },
   "role": "Solo Playable Developer",
   "impacts": [
-    { "label": "CPI Reduction", "desc": "Reduced CPI by 70%, bringing the game from near-dead status to close to passing soft launch — still actively running and iterating" },
-    { "label": "Hypothesis-Driven Testing", "desc": "Tested multiple hypotheses not present in the original product, achieving strong results — higher impressions, increased playable completion rates through new effects, redesigned maps with reduced difficulty, and better player feedback" },
-    { "label": "Wordless Tutorial Design", "desc": "Designed tutorial maps that teach players within the first 5–10 seconds without any text, images, or explicit instructions" },
-    { "label": "Skill Illusion Moments", "desc": "Created gameplay situations that make players feel they won through their own skill and ability, boosting engagement and satisfaction" },
-    { "label": "Portrait Mode Pivot", "desc": "Tested hypothesis of switching from the original game's landscape orientation to portrait mode — results were strong enough that the product team published an additional portrait version of the game" }
+    {
+      "label": "CPI Reduction",
+      "desc": "Reduced CPI by 70%, bringing the game from near-dead status to close to passing soft launch — still actively running and iterating"
+    },
+    {
+      "label": "Hypothesis-Driven Testing",
+      "desc": "Tested multiple hypotheses not present in the original product, achieving strong results — higher impressions, increased playable completion rates through new effects, redesigned maps with reduced difficulty, and better player feedback"
+    },
+    {
+      "label": "Wordless Tutorial Design",
+      "desc": "Designed tutorial maps that teach players within the first 5–10 seconds without any text, images, or explicit instructions"
+    },
+    {
+      "label": "Skill Illusion Moments",
+      "desc": "Created gameplay situations that make players feel they won through their own skill and ability, boosting engagement and satisfaction"
+    },
+    {
+      "label": "Portrait Mode Pivot",
+      "desc": "Tested hypothesis of switching from the original game's landscape orientation to portrait mode — results were strong enough that the product team published an additional portrait version of the game"
+    }
   ],
   "hypotheses": [
-    { "name": "New visual effects & map redesign", "desc": "Added new effects and redesigned maps with reduced difficulty compared to the original game, plus better player feedback", "result": "Higher impressions, increased playable completion rate", "adopted": true },
-    { "name": "Portrait mode (landscape → portrait)", "desc": "Tested switching from the original game's landscape orientation to portrait mode for playable ads", "result": "Strong performance — product team published an additional portrait version of the game", "adopted": true },
-    { "name": "Wordless tutorial in first 5–10s", "desc": "Designed tutorial maps that teach players purely through level design, no text or images needed", "result": "Players understood mechanics quickly, improved early retention", "adopted": true }
+    {
+      "name": "New visual effects & map redesign",
+      "desc": "Added new effects and redesigned maps with reduced difficulty compared to the original game, plus better player feedback",
+      "result": "Higher impressions, increased playable completion rate",
+      "adopted": true
+    },
+    {
+      "name": "Portrait mode (landscape → portrait)",
+      "desc": "Tested switching from the original game's landscape orientation to portrait mode for playable ads",
+      "result": "Strong performance — product team published an additional portrait version of the game",
+      "adopted": true
+    },
+    {
+      "name": "Wordless tutorial in first 5–10s",
+      "desc": "Designed tutorial maps that teach players purely through level design, no text or images needed",
+      "result": "Players understood mechanics quickly, improved early retention",
+      "adopted": true
+    }
   ],
   "metrics": [
-    { "label": "CPI", "before": "High", "after": "−70%", "unit": "", "lowerIsBetter": true }
-  ]
+    {
+      "label": "CPI",
+      "before": "High",
+      "after": "−70%",
+      "unit": "",
+      "lowerIsBetter": true
+    }
+  ],
+  "focus": "Game feel · Creative testing",
+  "scope": "Playable ad development; original product by its respective team.",
+  "caseStudy": {
+    "challenge": "Make the first few seconds understandable and rewarding, then test which gameplay changes improve acquisition.",
+    "contributions": [
+      "Built beat-synced obstacles and camera feedback, with input buffering and coyote time for responsive movement.",
+      "Designed wordless tutorial maps and tuned difficulty, effects, and player feedback.",
+      "Tested a portrait version of the landscape experience; the product team went on to publish a portrait version."
+    ],
+    "outcome": "70% lower CPI across playable iterations",
+    "evidence": "CPI reduction reported in this project’s results. Campaign spend, baseline CPI, and test window are not included.",
+    "takeaway": "Gameplay experiments can inform the product itself, beyond the ad creative."
+  },
+  "result": {
+    "value": "−70%",
+    "label": "CPI across playable iterations"
+  }
 }

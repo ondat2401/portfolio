@@ -1,13 +1,34 @@
 {
   "id": "duet-cats",
   "title": "Duet Cats: Cute Music Game",
-  "desc": "Short description.",
+  "desc": "A music-game playable focused on responsive controls, beat-aligned patterns, and expressive hit feedback.",
   "detail": "A minimalist rhythm-based arcade game inspired by duet-style mechanics, where two linked cats orbit around a center point and you rotate them to weave through incoming obstacles, all tightly synced to the soundtrack.<br><br> Role: Playable Developer<br> Built a twin-orbit control system with precise angular movement, collision detection, and easing curves to keep rotations responsive yet readable at high speeds. Implemented beat-aligned obstacle spawning driven by predefined patterns and BPM data, with dynamic difficulty scaling based on player performance. Tuned camera shake, trails, and hit/miss feedback to reinforce the musical rhythm and maintain a satisfying game feel. Optimized pooling and lightweight shaders to keep performance smooth on mid- to low-end mobile devices.<br><br> Created as a portfolio project to showcase minimalist game design, rhythm-synced obstacle patterns, and polished duet-style controls tailored for mobile.",
   "image": "projects/duet-cats/thumbnail.png",
   "video": "projects/duet-cats/preview.mp4",
-  "tech": ["Unity", "C#", "Rhythm", "2D Shader", "DOTween", "Luna", "Particles"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Rhythm",
+    "2D Shader",
+    "DOTween",
+    "Luna",
+    "Particles"
+  ],
   "playStore": "https://play.google.com/store/apps/details?id=com.amanotes.gs.g06&hl=en",
   "appStore": "https://apps.apple.com/vn/app/duet-cats-rhythm-meow-game/id1658687701",
   "playable": true,
-  "playableFiles": ["projects/duet-cats/playable.html"]
+  "playableFiles": [
+    "projects/duet-cats/playable.html"
+  ],
+  "role": "Playable Developer",
+  "focus": "Rhythm input · Feedback",
+  "scope": "Playable ad development; original product by its respective team.",
+  "caseStudy": {
+    "challenge": "Communicate a rhythm loop quickly through controls, musical timing, and visual feedback.",
+    "contributions": [
+      "Implemented responsive controls and collision handling.",
+      "Built beat-aligned patterns with configurable difficulty.",
+      "Tuned trails, camera feedback, and lightweight effects for mobile."
+    ]
+  }
 }

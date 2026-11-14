@@ -1,13 +1,34 @@
 {
   "id": "decor-room",
   "title": "Decor Room: Animal Music Party",
-  "desc": "A cozy music-decor game where you design an animal party room, placing interactive items that react and groove to the music.",
+  "desc": "A music-and-decoration playable with interactive room placement and audio-reactive presentation.",
   "detail": "A cozy music-decor experience where you design a party room for cute animal characters, placing furniture, lights, and interactive music objects that react to the beat. As you decorate, each item adds sound, animation, or visual effects, turning the room into a living music party scene.<br><br> Role: Solo Playable Developer<br> Built a modular decor system where each object can attach its own sound layer, animation, and VFX, all driven by a shared music timeline. Implemented snap-based placement, drag-and-drop controls, and stateful items (on/off, upgraded variants) to keep decorating simple but expressive on mobile. Created a lightweight audio layering system so multiple objects can add loops and sound effects without overloading the mix, and synchronized key animations (lights, dancing animals, confetti) with musical beats and sections. Optimized batching, pooling, and culling for a stable 60fps target even in heavily decorated rooms.<br><br> Created as a portfolio project to highlight casual game UX, audio-reactive systems, and mobile-friendly performance for interactive music scenes.",
   "image": "projects/decor-room/thumbnail.jpg",
   "video": "projects/decor-room/preview.mp4",
-  "tech": ["Unity", "C#", "Puzzle", "2D Shader", "DOTween", "Luna", "Particles"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Puzzle",
+    "2D Shader",
+    "DOTween",
+    "Luna",
+    "Particles"
+  ],
   "playStore": "https://play.google.com/store/apps/details?id=com.ngd.capybaradream&hl=en",
   "appStore": "https://apps.apple.com/us/app/decor-room-animal-music-party/id6754315956",
   "playable": true,
-  "playableFiles": ["projects/decor-room/playable.html"]
+  "playableFiles": [
+    "projects/decor-room/playable.html"
+  ],
+  "role": "Solo Playable Developer",
+  "focus": "Interaction · Audio-reactive visuals",
+  "scope": "Playable ad development; original product by its respective team.",
+  "caseStudy": {
+    "challenge": "Connect room decoration and music through clear interactions and rewarding feedback.",
+    "contributions": [
+      "Implemented interactive decoration and item placement.",
+      "Connected item feedback and visual effects to the music.",
+      "Tuned transitions and rendering for a compact mobile experience."
+    ]
+  }
 }

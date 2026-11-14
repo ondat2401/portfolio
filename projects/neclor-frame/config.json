@@ -1,13 +1,33 @@
 {
   "id": "neclor-frame",
   "title": "Neclor Frame",
-  "desc": "",
-  "detail": "Full detailed description here.",
+  "desc": "A personal Unity puzzle project exploring state-driven gameplay, pixel art, and post-processing.",
+  "detail": "A personal Unity puzzle project exploring state-driven gameplay, pixel art, and post-processing.<br><br>A personal project built with Unity/C#, DOTween, state machines, post-processing, and an Aseprite pixel-art workflow. Explore the playable version on itch.io.",
   "image": "projects/neclor-frame/thumbnail.png",
   "video": "projects/neclor-frame/preview.mp4",
-  "tech": ["Unity", "C#", "Puzzle", "Post Processing", "DOTween", "State Machine", "Aseprite"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Puzzle",
+    "Post Processing",
+    "DOTween",
+    "State Machine",
+    "Aseprite"
+  ],
   "playStore": "",
   "appStore": "",
   "playable": true,
-  "playableFiles": ["https://ondat24.itch.io/neclor-frame"]
+  "playableFiles": [
+    "https://ondat24.itch.io/neclor-frame"
+  ],
+  "role": "Personal project",
+  "focus": "Unity · State machines · Pixel art",
+  "scope": "Personal Unity project",
+  "caseStudy": {
+    "challenge": "Explore puzzle gameplay and visual presentation in a personal Unity project.",
+    "contributions": [
+      "Project stack: Unity/C#, state machines, DOTween, and post-processing.",
+      "Pixel-art workflow using Aseprite; a playable version is available on itch.io."
+    ]
+  }
 }

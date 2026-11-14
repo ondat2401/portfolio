@@ -1,20 +1,59 @@
 {
   "id": "magic-dance-star",
   "title": "Magic Dance Star: Rhythm Tiles",
-  "desc": "The company's first playable ad combining rhythm gameplay with 3D Audition-style dance mechanics.",
+  "desc": "A 3D dance rhythm playable built to preserve the game’s character within a total build budget under 5 MB.",
   "detail": "The company's first playable ad combining rhythm gameplay with 3D Audition-style dance mechanics. Features polished visual effects and audio feedback that recreate the feel of the original game, with multiple 3D character models optimized to keep the total build size under 5MB.<br><br>Role: Solo Playable Developer<br>Currently in soft launch phase.",
   "image": "projects/magic-dance-star/thumbnail.jpg",
   "video": "projects/magic-dance-star/preview.mp4",
-  "tech": ["Unity", "C#", "Luna", "Animator", "DOTween", "3D Shader", "Particles"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Luna",
+    "Animator",
+    "DOTween",
+    "3D Shader",
+    "Particles"
+  ],
   "playStore": "https://play.google.com/store/apps/details?id=com.musicgame.magicdance",
   "appStore": "https://apps.apple.com/vn/app/magic-dance-star-rhythm-tiles/id6755515737",
   "playable": true,
-  "playableFiles": ["projects/magic-dance-star/playable.html"],
-  "duration": { "from": "2025-03", "to": "Present" },
+  "playableFiles": [
+    "projects/magic-dance-star/playable.html"
+  ],
+  "duration": {
+    "from": "2025-03",
+    "to": "Present"
+  },
   "role": "Solo Playable Developer",
   "impacts": [
-    { "label": "First 3D Rhythm Playable", "desc": "Built the company's first playable ad combining rhythm mechanics with 3D Audition-style dance gameplay" },
-    { "label": "Visual & Audio Fidelity", "desc": "Rich visual effects and audio feedback that recreate the feel of the original game within a playable ad" },
-    { "label": "3D Model Optimization", "desc": "Multiple 3D character models optimized to keep total build size under 5MB" }
-  ]
+    {
+      "label": "First 3D Rhythm Playable",
+      "desc": "Built the company's first playable ad combining rhythm mechanics with 3D Audition-style dance gameplay"
+    },
+    {
+      "label": "Visual & Audio Fidelity",
+      "desc": "Rich visual effects and audio feedback that recreate the feel of the original game within a playable ad"
+    },
+    {
+      "label": "3D Model Optimization",
+      "desc": "Multiple 3D character models optimized to keep total build size under 5MB"
+    }
+  ],
+  "focus": "3D gameplay · Build optimization",
+  "scope": "Playable ad development; original product by its respective team.",
+  "caseStudy": {
+    "challenge": "Bring 3D characters, rhythm input, effects, and audio into a compact playable ad.",
+    "contributions": [
+      "Built the company’s first playable combining rhythm input with 3D dance gameplay.",
+      "Implemented character animation, visual effects, and audio feedback around the rhythm loop.",
+      "Optimized multiple character models to keep the total playable build under 5 MB."
+    ],
+    "outcome": "3D characters and rhythm gameplay in under 5 MB",
+    "evidence": "Total build size reported in the project notes; this is a size constraint, not an acquisition metric.",
+    "takeaway": "Preserve the core experience while working within a strict delivery budget."
+  },
+  "result": {
+    "value": "<5 MB",
+    "label": "Total 3D playable build"
+  }
 }

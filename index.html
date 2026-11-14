@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>On Thanh Dat | Unity Developer &amp; Playable Ads</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/media/favicon.svg">
 
   <!-- Meta Tags (updated by JS from config) -->
-  <meta name="description" id="metaDesc" content="">
+  <meta name="description" id="metaDesc" content="Unity/C# developer building mobile games and playable ads. Explore playable work, technical contributions, and project case studies.">
   <meta name="author" content="">
 
   <!-- Open Graph / Social Share -->
@@ -30,6 +30,7 @@
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/comic.css" rel="stylesheet">
   <link href="assets/css/comic-effects.css" rel="stylesheet">
+  <link href="assets/css/recruiter.css" rel="stylesheet">
 
   <!-- FOUC Prevention: Apply saved theme before render -->
   <script>
@@ -70,9 +71,9 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#latestProjectSection">Highlights</a></li>
+          <li class="nav-item"><a class="nav-link" href="#latestProjectSection">Case studies</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Toolkit</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
           <li class="nav-item ms-lg-2"><a class="nav-link nav-cv-btn" id="navCvBtn" href="#" target="_blank">View CV</a></li>
@@ -89,6 +90,7 @@
   </button>
   <button class="motion-toggle" id="motionToggle" type="button" aria-pressed="false">Motion: on</button>
 
+  <main id="mainContent">
   <!-- Hero -->
   <section id="hero" class="hero-section d-flex align-items-center">
     <div class="container text-center text-white position-relative scroll-reveal scale-up" id="heroContent"></div>
@@ -98,6 +100,7 @@
   <section id="latestProjectSection" class="py-5">
     <div class="container">
       <h2 class="section-title text-center mb-5 scroll-reveal" id="titleHighlights"></h2>
+      <p class="section-intro">Two projects that show how I think, what I built, and what changed. Play the work, then explore the decisions behind it.</p>
       <div id="latestProject" class="scroll-reveal"></div>
     </div>
   </section>
@@ -130,6 +133,7 @@
   <section id="projects" class="py-5">
     <div class="container">
       <h2 class="section-title text-center mb-5 scroll-reveal" id="titleProjects"></h2>
+      <p class="section-intro">Explore the range: rhythm, puzzle, idle, and personal experiments. Each project includes my role, implementation notes, and a preview.</p>
       <div id="projectFilterBar" class="project-filter-bar scroll-reveal"></div>
       <div id="projectCategories" class="scroll-reveal"></div>
     </div>
@@ -143,6 +147,7 @@
     </div>
   </section>
 
+  </main>
   <!-- Footer -->
   <footer class="bg-dark text-white py-4">
     <div class="container text-center" id="footerContent"></div>

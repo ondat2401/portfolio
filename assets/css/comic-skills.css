@@ -1,39 +1,33 @@
 /* Three disciplines, one workbench. Artwork owns motion; copy stays still. */
-.comic-site .skills-intro{margin:-12px 0 32px;color:var(--color-text-muted);font-size:17px}
-.comic-site .skills-workbench{display:grid;grid-template-columns:7fr 5fr;gap:24px;padding:8px}
-.comic-site .toolkit-panel{position:relative;display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;align-items:center;min-width:0;padding:28px;background:var(--color-bg-dark);border:2px solid var(--paper);box-shadow:5px 6px #080808;--panel-tilt:.4deg}
-.comic-site .toolkit-panel:before{content:'';position:absolute;inset:-8px;background:url('../comic/panel-frame.svg') center/100% 100%;transform:rotate(var(--panel-tilt));pointer-events:none}
-.comic-site .toolkit-panel[data-skill-group="build"]{grid-row:span 2;grid-template-columns:1fr;gap:24px;padding:32px 36px;--panel-tilt:-.5deg;background-image:radial-gradient(#a99c8325 1px,transparent 1.5px);background-size:9px 9px}
-.comic-site .toolkit-panel[data-skill-group="ship"]{--panel-tilt:-.25deg}
-.comic-site .toolkit-copy{min-width:0}
-.comic-site .toolkit-title{font:clamp(32px,3.4vw,48px)/1.1 var(--font-pixel);color:var(--color-text);margin:0 0 12px;letter-spacing:.02em}
-.comic-site [data-skill-group="build"] .toolkit-title{font-size:clamp(54px,6vw,76px)}
-.comic-site .toolkit-description{font:16px/1.6 var(--font-body);color:var(--color-text-muted);max-width:40ch;margin:0 0 20px}
-.comic-site .toolkit-skills{list-style:none;padding:0;margin:0;display:grid;gap:16px}
-.comic-site .toolkit-skills li{padding-left:12px;border-left:2px solid var(--red)}
-.comic-site .toolkit-skills strong{display:block;color:var(--color-text);font:700 14px/1.4 var(--font-body)}
-.comic-site .toolkit-skills li>span{display:block;color:var(--color-text-muted);font:13px/1.5 var(--font-body);margin-top:4px;max-width:40ch}
-.comic-site .toolkit-project{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;padding:14px 0 4px;margin-top:20px;min-height:44px;border-top:1px solid var(--color-text-muted);color:var(--color-text);text-decoration:none;font:600 13px/1.5 var(--font-body)}
-.comic-site .toolkit-project>span:first-child{flex-basis:100%;color:var(--color-text-muted);font-size:11px;font-weight:400}
+.comic-site .skills-intro{margin:-8px 0 32px;color:var(--color-text);font-size:18px;line-height:1.6;max-width:64ch}
+.comic-site .skills-workbench{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:0}
+.comic-site .toolkit-panel{position:relative;display:flex;flex-direction:column;gap:20px;min-width:0;padding:28px;background:var(--color-bg-card);border:1px solid var(--color-text-muted);border-top:4px solid var(--red)}
+.comic-site .toolkit-copy{min-width:0;display:flex;flex-direction:column;flex:1}
+.comic-site .toolkit-title{font:700 26px/1.2 var(--font-body);color:var(--color-text);margin:0 0 12px;letter-spacing:0}
+.comic-site .toolkit-description{font:16px/1.65 var(--font-body);color:var(--color-text-muted);max-width:48ch;margin:0 0 24px}
+.comic-site .toolkit-skills{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:24px;flex:1;align-content:start}
+.comic-site .toolkit-skills li{padding:0}
+.comic-site .toolkit-skills strong{display:block;color:var(--color-text);font:700 18px/1.4 var(--font-body)}
+.comic-site .toolkit-skills li>span{display:block;color:var(--color-text);font:16px/1.65 var(--font-body);margin-top:8px;max-width:48ch}
+.comic-site .toolkit-project{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:20px 0 0;margin-top:auto;min-height:44px;border-top:1px solid var(--color-text-muted);color:var(--color-text);text-decoration:none;font:600 15px/1.5 var(--font-body)}
+.comic-site .toolkit-project>span:first-child{flex-basis:100%;color:var(--color-text-muted);font-size:14px;font-weight:400}
 .comic-site .toolkit-project strong{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
 .comic-site .toolkit-project>span:last-child{margin-left:auto;font-size:20px}
-.comic-site .toolkit-art{position:relative;width:100%;aspect-ratio:1;pointer-events:none}
+.comic-site .toolkit-art{position:relative;width:72px;height:64px;flex-shrink:0;pointer-events:none}
 .comic-site .toolkit-art:before,.comic-site .toolkit-art:after{content:'';position:absolute;inset:0;background-position:center;background-size:contain;background-repeat:no-repeat}
-.comic-site [data-skill-group="build"] .toolkit-art{width:min(100%,260px);aspect-ratio:13/10;justify-self:center;align-self:center}
+.comic-site [data-skill-group="build"] .toolkit-art{width:80px}
 .comic-site [data-skill-group="build"] .toolkit-art:before{background-image:url('../comic/skill-build.svg')}
 .comic-site [data-skill-group="build"] .toolkit-art:after{inset:0 12% 60% 50%;background-image:url('../comic/skill-piece.svg');transform:translate(-8px,18px)}
 .comic-site [data-skill-group="feel"] .toolkit-art:after{background-image:url('../comic/skill-feel.svg')}
 .comic-site [data-skill-group="ship"] .toolkit-art:before{background-image:url('../comic/skill-ship.svg')}
 .comic-site [data-skill-group="ship"] .toolkit-art:after{background-image:url('../comic/skill-chart.svg')}
-html.light-theme .comic-site .toolkit-panel:before,html.light-theme .comic-site .toolkit-art{filter:brightness(.55)}
+html.light-theme .comic-site .toolkit-art{filter:brightness(.55)}
 
 @media(prefers-reduced-motion:no-preference){
-  .comic-site .toolkit-panel:focus-within:before{animation:comic-line-boil .66s steps(1,end) 1}
   .comic-site [data-skill-group="build"]:focus-within .toolkit-art:after{animation:toolkit-piece-fit .65s steps(6,end) both}
   .comic-site [data-skill-group="feel"]:focus-within .toolkit-art:after{animation:toolkit-ink-draw .6s steps(8,end) both}
   .comic-site [data-skill-group="ship"]:focus-within .toolkit-art:after{animation:toolkit-ink-draw .7s steps(7,end) both}
   @media(hover:hover){
-    .comic-site .toolkit-panel:hover:before{animation:comic-line-boil .66s steps(1,end) 1}
     .comic-site [data-skill-group="build"]:hover .toolkit-art:after{animation:toolkit-piece-fit .65s steps(6,end) both}
     .comic-site [data-skill-group="feel"]:hover .toolkit-art:after{animation:toolkit-ink-draw .6s steps(8,end) both}
     .comic-site [data-skill-group="ship"]:hover .toolkit-art:after{animation:toolkit-ink-draw .7s steps(7,end) both}
@@ -41,17 +35,12 @@ html.light-theme .comic-site .toolkit-panel:before,html.light-theme .comic-site 
 }
 @keyframes toolkit-piece-fit{0%{transform:translate(14px,-16px) rotate(12deg)}65%{transform:translate(-9px,20px) rotate(-3deg)}100%{transform:translate(-8px,18px) rotate(0)}}
 @keyframes toolkit-ink-draw{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
-@media(max-width:1100px){
-  .comic-site .toolkit-panel{grid-template-columns:72px minmax(0,1fr);padding:24px;gap:16px}
-  .comic-site .toolkit-panel[data-skill-group="build"]{padding:28px}
-}
-@media(max-width:800px){
+@media(max-width:991px){
   .comic-site .skills-workbench{grid-template-columns:1fr;gap:28px}
-  .comic-site .toolkit-panel,.comic-site .toolkit-panel[data-skill-group="build"]{grid-template-columns:100px minmax(0,1fr);grid-row:auto;gap:24px;padding:24px}
-  .comic-site [data-skill-group="build"] .toolkit-title{font-size:44px}
+  .comic-site .toolkit-panel{padding:28px}
+  .comic-site .toolkit-skills{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
 }
-@media(max-width:440px){
-  .comic-site .toolkit-panel,.comic-site .toolkit-panel[data-skill-group="build"]{grid-template-columns:1fr;gap:8px;padding:24px 20px}
-  .comic-site .toolkit-art,.comic-site [data-skill-group="build"] .toolkit-art{width:100px;height:76px;justify-self:start}
-  .comic-site .toolkit-title,.comic-site [data-skill-group="build"] .toolkit-title{font-size:38px}
+@media(max-width:575px){
+  .comic-site .toolkit-panel{padding:24px 20px}
+  .comic-site .toolkit-skills{grid-template-columns:1fr;gap:24px}
 }

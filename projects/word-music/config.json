@@ -1,13 +1,33 @@
 {
   "id": "word-music",
   "title": "Word Music Explored",
-  "desc": "A word puzzle rhythm game where you form words to unlock music layers and explore dynamic soundscapes.",
+  "desc": "A word-puzzle playable connecting word validation to progressive musical layers and visual rewards.",
   "detail": "A hybrid word puzzle and music exploration game where you spell words from given letters to unlock new instruments, loops, and sound layers, gradually building a full track as you progress through each level.<br><br> Role: Solo Playable Developer<br> Designed and implemented a flexible word-generation and validation system, combined with a music layering pipeline that maps player progress to dynamic changes in the soundtrack (adding instruments, filters, and transitions). Built level structures with themed word sets and difficulty curves, plus progression systems that reward longer words and smart letter usage. Synced visual feedback (waves, pulses, particle effects) to both correct words and musical changes to keep the experience readable and satisfying on mobile.<br><br> Developed as a portfolio project to showcase hybrid game design (puzzle + music), audio-reactive systems, and a scalable content pipeline for word-based music experiences.",
   "image": "projects/word-music/thumbnail.jpg",
   "video": "projects/word-music/preview.mp4",
-  "tech": ["Unity", "C#", "Puzzle", "DOTween", "Luna", "Line Renderer"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Puzzle",
+    "DOTween",
+    "Luna",
+    "Line Renderer"
+  ],
   "playStore": "https://play.google.com/store/apps/details?id=com.core.wordmusic&hl=en",
   "appStore": "https://apps.apple.com/us/app/word-puzzle-music/id6751626442",
   "playable": true,
-  "playableFiles": ["projects/word-music/playable.html"]
+  "playableFiles": [
+    "projects/word-music/playable.html"
+  ],
+  "role": "Solo Playable Developer",
+  "focus": "Puzzle rules · Layered audio",
+  "scope": "Playable ad development; original product by its respective team.",
+  "caseStudy": {
+    "challenge": "Make word-puzzle progress audible as well as visible.",
+    "contributions": [
+      "Implemented word generation, validation, and configurable word sets.",
+      "Mapped progress to musical layers, filters, and transitions.",
+      "Synchronized visual feedback with correct words and musical changes."
+    ]
+  }
 }

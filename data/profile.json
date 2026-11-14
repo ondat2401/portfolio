@@ -1,27 +1,70 @@
 {
   "hero": {
     "name": "On Thanh Dat",
-    "tagline": "Game Developer & Playable Ads Specialist",
-    "cta": "View Projects"
+    "tagline": "Unity Developer · Mobile Games & Playable Ads",
+    "cta": "Explore case studies"
   },
   "about": {
-    "description": "I'm a Unity Developer specializing in playable ads and mobile game development. I build rhythm games, idle mechanics, and puzzle experiences optimized for mobile — focusing on tight game feel, performance, and data-driven iteration.",
+    "description": "I’m On Thanh Dat, a Unity/C# developer working across mobile games and playable ads. I turn gameplay ideas into responsive, readable experiences: rhythm systems, puzzle rules, progression, and the feedback that makes a player try again. My work spans prototyping, mobile optimization, release, and creative testing at MOPA GAMES, Amanotes, and Supercent Vietnam.",
     "cvLink": "assets/media/CV.pdf",
     "avatar": "assets/media/avt.mp4",
     "quote": ""
   },
   "stats": [
-    { "icon": "⚡", "label": "Years of Experience", "value": "auto", "startDate": "2024-01" },
-    { "icon": "🎮", "label": "Projects Shipped", "value": "3+" },
-    { "icon": "📱", "label": "Playable Ads Built", "value": "50+" }
+    {
+      "icon": "⚡",
+      "label": "Years of Experience",
+      "value": "auto",
+      "startDate": "2024-01"
+    },
+    {
+      "icon": "🎮",
+      "label": "Mobile games shipped",
+      "value": "3+"
+    },
+    {
+      "icon": "📱",
+      "label": "Playable ads built",
+      "value": "50+"
+    }
   ],
   "skills": [
-    { "group": "build", "icon": "bi-unity", "title": "Unity / C#", "desc": "Prototype a mechanic, wire up its rules, and tune it into a playable 2D/3D loop." },
-    { "group": "feel", "icon": "bi-music-note-beamed", "title": "Rhythm Game Design", "desc": "Line up input windows and feedback with the beat." },
-    { "group": "ship", "icon": "bi-phone", "title": "Mobile Optimization", "desc": "Target stable 60 fps with object pooling and batching on mobile hardware." },
-    { "group": "feel", "icon": "bi-lightning", "title": "DOTween / Animation", "desc": "Use timing, Spine, and procedural motion to make every action read clearly." },
-    { "group": "build", "icon": "bi-puzzle", "title": "Puzzle & Idle Design", "desc": "Shape level goals and progression so each move is clear and the next one beckons." },
-    { "group": "ship", "icon": "bi-bar-chart", "title": "Data-Driven Iteration", "desc": "Frame A/B tests around a hypothesis; use CPI results to shape the next playable." }
+    {
+      "group": "build",
+      "icon": "bi-unity",
+      "title": "Unity / C#",
+      "desc": "Prototype a mechanic, wire up its rules, and tune it into a playable 2D/3D loop."
+    },
+    {
+      "group": "feel",
+      "icon": "bi-music-note-beamed",
+      "title": "Rhythm Game Design",
+      "desc": "Line up input windows and feedback with the beat."
+    },
+    {
+      "group": "ship",
+      "icon": "bi-phone",
+      "title": "Mobile Optimization",
+      "desc": "Target stable 60 fps with object pooling and batching on mobile hardware."
+    },
+    {
+      "group": "feel",
+      "icon": "bi-lightning",
+      "title": "DOTween / Animation",
+      "desc": "Use timing, Spine, and procedural motion to make every action read clearly."
+    },
+    {
+      "group": "build",
+      "icon": "bi-puzzle",
+      "title": "Puzzle & Idle Design",
+      "desc": "Shape level goals and progression so each move is clear and the next one beckons."
+    },
+    {
+      "group": "ship",
+      "icon": "bi-bar-chart",
+      "title": "Data-Driven Iteration",
+      "desc": "Frame A/B tests around a hypothesis; use CPI results to shape the next playable."
+    }
   ],
   "skillGroups": [
     {
@@ -67,8 +110,17 @@
     }
   ],
   "socials": [
-    { "icon": "bi-github", "link": "https://github.com/ondat24" },
-    { "icon": "bi-linkedin", "link": "https://linkedin.com/" },
-    { "icon": "bi-envelope-fill", "link": "mailto:" }
+    {
+      "icon": "bi-github",
+      "link": "https://github.com/ondat24"
+    },
+    {
+      "icon": "bi-linkedin",
+      "link": "https://linkedin.com/"
+    },
+    {
+      "icon": "bi-envelope-fill",
+      "link": "mailto:"
+    }
   ]
 }

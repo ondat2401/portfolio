@@ -1,11 +1,32 @@
 {
   "id": "cat-bus-jam",
   "title": "Cat Bus Jam: Seat Out",
-  "desc": "A cute traffic puzzle where you match cats to their color-coded buses and clear traffic jams with simple, satisfying moves.",
+  "desc": "A published mobile puzzle with color-matching rules, progressive levels, and readable touch interactions.",
   "detail": "A charming traffic puzzle game where you slide and rearrange cats and buses on a crowded grid, matching each cat to the bus of the same color while untangling increasingly tricky jams at the station. <br><br> Role: Unity Developer<br> Designed and implemented core color-matching and traffic-unblocking mechanics, with level progression that gradually introduces tighter layouts and more complex jams. Focused on readable UX for drag/tap interactions, clear visual feedback when cats reach the right bus, and smooth animations that reinforce the \"cute chaos\" theme. Optimized level data and assets for quick loads and stable performance on low- to mid-range Android devices.<br><br> Released on Google Play as a casual puzzle title to showcase accessible level design, satisfying match-and-clear gameplay, and mobile-ready performance for a broad audience.",
   "image": "projects/cat-bus-jam/thumbnail.png",
   "video": "projects/cat-bus-jam/preview.mp4",
-  "tech": ["Unity", "C#", "Puzzle", "3D Shader", "DOTween", "SDK", "FireBase"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Puzzle",
+    "3D Shader",
+    "DOTween",
+    "SDK",
+    "FireBase"
+  ],
   "playStore": "https://play.google.com/store/apps/details?id=com.catbus.puzzle.escape.mp&hl=vi",
-  "appStore": ""
+  "appStore": "",
+  "role": "Unity Developer",
+  "focus": "Puzzle systems · Mobile release",
+  "scope": "Mobile game development",
+  "caseStudy": {
+    "challenge": "Keep color matching and traffic-unblocking rules clear as level layouts grow more complex.",
+    "contributions": [
+      "Implemented core matching and traffic-unblocking mechanics.",
+      "Built progression with increasingly constrained puzzle layouts.",
+      "Tuned tap/drag feedback, animations, and level assets for mobile."
+    ],
+    "outcome": "Released on Google Play",
+    "evidence": "The linked store page is for the published product. My contribution is the Unity development described here."
+  }
 }

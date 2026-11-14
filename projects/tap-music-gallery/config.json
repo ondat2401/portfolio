@@ -1,13 +1,33 @@
 {
   "id": "tap-music-gallery",
   "title": "Tap Music Gallery",
-  "desc": "A rhythm-based tap gallery experience where you tap notes to the beat to reveal animated photo walls.",
+  "desc": "A rhythm-tap playable linking beatmap input and combo feedback to progressive gallery reveals.",
   "detail": "A rhythm-based tap gallery experience where you tap notes to the beat to reveal animated photo walls, stickers, and special visual moments synced with the music.<br><br> Role: Solo Playable Developer<br> Implemented a beatmap-driven tap system that synchronizes note patterns, combo effects, and gallery reveals directly to each song's timeline. Built a gallery framework where photos, stickers, and overlays can be arranged in themed layouts and unlocked progressively based on player performance. Added lightweight shaders, transitions, and particle effects to highlight key beats while keeping performance smooth on mobile devices.<br><br> Developed as a portfolio project to showcase rhythm-based interaction design, music-synced visuals, and stylish gallery presentation for mobile.",
   "image": "projects/tap-music-gallery/thumbnail.jpg",
   "video": "projects/tap-music-gallery/preview.mp4",
-  "tech": ["Unity", "C#", "Puzzle", "DOTween", "Luna", "Particles"],
+  "tech": [
+    "Unity",
+    "C#",
+    "Puzzle",
+    "DOTween",
+    "Luna",
+    "Particles"
+  ],
   "playStore": "https://play.google.com/store/apps/details?id=com.ngd.tapmusic&hl=en",
   "appStore": "https://apps.apple.com/us/app/tap-music-gallery/id6752386492?l=en",
   "playable": true,
-  "playableFiles": ["projects/tap-music-gallery/playable.html"]
+  "playableFiles": [
+    "projects/tap-music-gallery/playable.html"
+  ],
+  "role": "Solo Playable Developer",
+  "focus": "Beatmap pipeline · Visual progression",
+  "scope": "Playable ad development; original product by its respective team.",
+  "caseStudy": {
+    "challenge": "Make each tap advance both the rhythm loop and the visual presentation.",
+    "contributions": [
+      "Implemented beatmap-driven note patterns and combo effects.",
+      "Built configurable gallery layouts with progressive reveals.",
+      "Added lightweight shaders, transitions, and beat-synced particles."
+    ]
+  }
 }

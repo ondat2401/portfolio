@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const projects = await projectsRes.json();
   setLoadProgress(50);
 
-  renderHero(profile.hero, profile.about.cvLink);
+  renderHero(profile.hero, profile.about.cvLink, projects.highlights);
   renderSectionTitles(site.sectionTitles);
   renderStats(profile.stats);
   setLoadProgress(60);
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   applyComicMediaRatios(document);
   setLoadProgress(80);
   renderTimeline(profile.timeline);
-  renderFooter(site, profile.socials);
+  renderFooter(site, profile.socials, profile.about.cvLink);
   setLoadProgress(90);
 
   document.title = site.title;
@@ -157,15 +157,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // --- Renderers ---
 
-function renderHero({ name, tagline, cta }, cvLink) {
+function renderHero({ name, tagline, cta }, cvLink, highlights = []) {
   const container = document.getElementById('heroContent');
+  const proof = highlights.filter(project => project.result).map(project => `
+    <a href="#project=${slugify(project.title)}"><strong>${project.result.value}</strong><span>${project.title.split(':')[0]}: ${project.result.label}</span></a>
+  `).join('');
   container.className = 'container hero';
   container.innerHTML = `
       <div class="hero-copy">
-        <div class="headline"><h1>GAME DEV.<br>GAMES THAT<br><em>FEEL ALIVE.</em></h1></div>
+        <div class="headline"><h1>SMALL SCREEN.<br>BIG GAME<br>FEEL.</h1></div>
         <p class="intro"></p>
-        <p class="hero-description">From a first tap to one more try. I build mobile games and playable ads with rhythm, character, and a feel for the details.</p>
-        <div class="hero-actions"><a class="button" href="#projects">View Projects</a><a class="hero-cv" target="_blank" rel="noopener">View CV ↗</a></div>
+        <p class="hero-description">I’m On Thanh Dat. I build Unity games and playable ads, from rhythm and puzzle systems to mobile optimization and creative testing.</p>
+        <div class="hero-actions"><a class="button" href="#latestProjectSection">Explore case studies</a><a class="hero-cv" target="_blank" rel="noopener">View CV ↗</a></div>
+        ${proof ? `<div class="hero-proof">${proof}</div>` : ''}
         <p class="hero-note">UNITY / C# / PLAYABLE ADS</p>
       </div>
       <div class="stage arcade-stage">
@@ -253,7 +257,8 @@ function renderAbout({ description, cvLink, avatar, avatarZoom, avatarOffsetX, a
     const style = `object-fit: cover; transform: scale(${zoom}) translate(${ox}px, ${oy}px);`;
 
     if (isVideo) {
-      avatarEl.innerHTML = `<video src="${avatar}" autoplay muted loop playsinline class="w-100 h-100 rounded-circle" style="${style}"></video>`;
+      const autoplay = !prefersReducedMotion && !document.body.classList.contains('motion-paused');
+      avatarEl.innerHTML = `<video src="${avatar}" ${autoplay ? 'autoplay' : ''} muted loop playsinline preload="metadata" class="w-100 h-100 rounded-circle" style="${style}"></video>`;
     } else {
       avatarEl.innerHTML = `<img src="${avatar}" alt="Avatar" class="w-100 h-100 rounded-circle" style="${style}">`;
     }
@@ -278,7 +283,7 @@ function renderSkills(skills, groups) {
         <h3 class="toolkit-title"></h3>
         <p class="toolkit-description"></p>
         <ul class="toolkit-skills"></ul>
-        <a class="toolkit-project"><span>In practice</span><strong></strong><span aria-hidden="true">↗</span></a>
+        <a class="toolkit-project"><span>See this in a project</span><strong></strong><span aria-hidden="true">↗</span></a>
       </div>
     `;
     panel.querySelector('.toolkit-title').textContent = group.title;
@@ -322,7 +327,7 @@ function renderHighlights(projects) {
                 </div>`}
             ${hasVideo && isLocal ? `
               <div class="video-preview" style="position:absolute;inset:0;">
-                <video src="${project.video}" muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+                <video src="${project.video}" preload="metadata" muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
               </div>
             ` : ''}
             ${hasVideo && !isLocal ? `
@@ -334,11 +339,14 @@ function renderHighlights(projects) {
           ${project.playable && project.playableFiles && project.playableFiles.length > 1 ? `<div class="playable-count-badge"><i class="bi bi-stack"></i> ${project.playableFiles.length}</div>` : ''}
         </div>
         <div class="col-lg-5">
+          <p class="project-role">${project.role || 'Game Developer'}</p>
           <h3 style="font-size: 0.9rem; color: var(--color-primary); text-shadow: var(--glow-primary);">${project.title}</h3>
           <p class="mt-3 latest-project-desc">${project.desc}</p>
+          ${project.result ? `<div class="case-result"><strong>${project.result.value}</strong><span>${project.result.label}</span></div>` : ''}
+          ${project.caseStudy ? `<dl class="case-preview"><div><dt>The challenge</dt><dd>${project.caseStudy.challenge}</dd></div><div><dt>My contribution</dt><dd>${project.caseStudy.contributions[0]}</dd></div></dl>` : ''}
           <div class="d-flex gap-3 flex-wrap mt-3">
             ${project.playable && project.playableFiles && project.playableFiles.length ? `<button class="btn btn-sm btn-outline-warning btn-play-now"><i class="bi bi-play-fill"></i> Play Now</button>` : ''}
-            <button class="btn btn-sm btn-outline-primary btn-detail btn-latest-detail">Detail</button>
+            <button class="btn btn-sm btn-outline-primary btn-detail btn-latest-detail" aria-label="Read case study: ${project.title}">Read case study</button>
           </div>
         </div>
       </div>
@@ -357,6 +365,7 @@ function renderHighlights(projects) {
 
     if (media && preview) {
       media.addEventListener('mouseenter', () => {
+        if (prefersReducedMotion || document.body.classList.contains('motion-paused')) return;
         if (video) { video.currentTime = 0; video.play().catch(() => preview.classList.remove('active')); }
         const iframe = preview.querySelector('iframe[data-src]');
         if (iframe) {
@@ -457,10 +466,10 @@ function renderProjectPage(cat, animate = true, direction = 'next') {
       <div class="card h-100 project-card" data-video="${hasVideo ? '1' : ''}" data-slug="${slugify(p.title)}">
         <div class="card-img-top project-thumb ratio ratio-16x9" style="position: relative; overflow: hidden;">
           ${p.image
-            ? `<img src="${p.image}" alt="${p.title}" style="object-fit: cover;">`
+            ? `<img src="${p.image}" alt="${p.title}" loading="lazy" decoding="async" style="object-fit: cover;">`
             : `<div class="d-flex align-items-center justify-content-center w-100 h-100"><i class="bi bi-image text-white fs-1"></i></div>`}
           ${isLocalVideo ? `<div class="video-preview" style="position:absolute;inset:0;">
-            <video src="${p.video}" muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+            <video src="${p.video}" preload="metadata" muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
           </div>` : ''}
           ${isEmbed ? `<div class="video-preview" style="position:absolute;inset:0;">
             <iframe data-src="${p.video}" style="width:100%;height:100%;border:none;" allow="autoplay"></iframe>
@@ -469,13 +478,16 @@ function renderProjectPage(cat, animate = true, direction = 'next') {
         ${p.playable && p.playableFiles && p.playableFiles.length > 1 ? `<div class="playable-count-badge"><i class="bi bi-stack"></i> ${p.playableFiles.length}</div>` : ''}
         <div class="card-body d-flex align-items-center justify-content-between py-2 px-3">
           <div>
-            <h5 class="card-title mb-0">${p.title}</h5>
+            <p class="project-role">${p.role || 'Game Developer'}</p>
+            <h4 class="card-title mb-0">${p.title}</h4>
+            <p class="project-summary">${p.desc || ''}</p>
+            ${p.focus ? `<p class="project-focus">${p.focus}</p>` : ''}
             ${p.tech && p.tech.length ? `<div class="tech-tags mt-1">${p.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>` : ''}
           </div>
           <div class="d-flex gap-2">
             ${p.playable && p.playableFiles && p.playableFiles.length ? `<button class="btn btn-sm btn-play-now" data-cat="${cat.id}" data-idx="${idx}"><i class="bi bi-play-fill"></i> Play</button>` : ''}
             <button class="btn btn-sm btn-outline-primary btn-detail" data-cat="${cat.id}" data-idx="${idx}">
-              Detail
+              My contribution
             </button>
           </div>
         </div>
@@ -497,6 +509,7 @@ function renderProjectPage(cat, animate = true, direction = 'next') {
       const iframe = preview.querySelector('iframe');
 
       card.addEventListener('mouseenter', () => {
+        if (prefersReducedMotion || document.body.classList.contains('motion-paused')) return;
         preview.style.display = 'block';
         if (video) {
           video.currentTime = 0;
@@ -537,7 +550,7 @@ function renderProjectPage(cat, animate = true, direction = 'next') {
     });
   };
 
-  if (animate) {
+  if (animate && !prefersReducedMotion && !document.body.classList.contains('motion-paused')) {
     const outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
     const inClass = direction === 'next' ? 'slide-in-left' : 'slide-in-right';
 
@@ -695,7 +708,18 @@ function showProjectModal(project) {
   const projectSlug = slugify(project.title);
   history.replaceState(null, '', '#project=' + projectSlug);
 
-  let body = '';
+  let body = `<p class="case-lead">${project.desc || ''}</p>`;
+  if (project.caseStudy) {
+    const study = project.caseStudy;
+    body += `<section class="case-study" aria-label="Project case study">
+      <p class="project-role">${project.role || 'Game Developer'}</p>
+      <p class="case-scope">${project.scope || ''}</p>
+      <h3>The challenge</h3><p>${study.challenge}</p>
+      <h3>What I built</h3><ul>${study.contributions.map(item => `<li>${item}</li>`).join('')}</ul>
+      ${study.outcome ? `<div class="case-outcome"><h3>The outcome</h3><p>${study.outcome}</p><small>${study.evidence || ''}</small></div>` : ''}
+      ${study.takeaway ? `<p class="case-takeaway"><strong>What this shows</strong> ${study.takeaway}</p>` : ''}
+    </section>`;
+  }
 
   // Video embed or local
   if (project.video) {
@@ -745,14 +769,14 @@ function showProjectModal(project) {
   }
 
   // Description
-  if (project.detail) {
+  if (!project.caseStudy && project.detail) {
     body += `<p>${project.detail}</p>`;
-  } else {
+  } else if (!project.caseStudy) {
     body += `<p>${project.desc}</p>`;
   }
 
   // Impacts
-  body += renderImpacts(project.impacts);
+  if (!project.caseStudy) body += renderImpacts(project.impacts);
 
   // Hypotheses
   body += renderHypotheses(project.hypotheses);
@@ -766,12 +790,12 @@ function showProjectModal(project) {
   const gpCfg = storeCfg.googlePlay || {};
   const asCfg = storeCfg.appStore || {};
   if (project.playStore) {
-    storeLinks.push(`<a href="${project.playStore}" target="_blank" class="btn btn-outline-gplay">
-      <i class="bi ${gpCfg.icon || 'bi-google-play'}"></i> ${gpCfg.text || 'Google Play'}
+    storeLinks.push(`<a href="${project.playStore}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gplay">
+      <i class="bi ${gpCfg.icon || 'bi-google-play'}"></i> ${project.storeLabel || gpCfg.text || 'Google Play'}
     </a>`);
   }
   if (project.appStore) {
-    storeLinks.push(`<a href="${project.appStore}" target="_blank" class="btn btn-outline-light">
+    storeLinks.push(`<a href="${project.appStore}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light">
       <i class="bi ${asCfg.icon || 'bi-apple'}"></i> ${asCfg.text || 'App Store'}
     </a>`);
   }
@@ -819,7 +843,7 @@ function renderTimeline(timeline) {
           ` : ''}
           <div class="timeline-brand-copy">
             <span class="timeline-company">${t.company}</span>
-            <h5 class="timeline-role">${t.role}</h5>
+            <h3 class="timeline-role">${t.role}</h3>
           </div>
         </div>
         <p class="timeline-desc">${t.desc}</p>
@@ -828,9 +852,13 @@ function renderTimeline(timeline) {
   `).join('');
 }
 
-function renderFooter({ copyright }, socials) {  document.getElementById('footerContent').innerHTML = `
-    <div class="mb-3">
-      ${socials.map((s) => `<a href="${s.link}" class="text-white me-3 fs-4"><i class="bi ${s.icon}"></i></a>`).join('')}
+function renderFooter({ copyright }, socials, cvLink = 'assets/media/CV.pdf') {
+  const validSocials = socials.filter(s => s.link && !['mailto:', 'https://linkedin.com/', '#'].includes(s.link));
+  document.getElementById('footerContent').innerHTML = `
+    <div class="contact-invite"><div><h2>Let’s build the next playable.</h2><p>Looking for a Unity developer who connects gameplay, feel, and iteration?</p></div><a class="btn btn-play-now" href="${cvLink}" target="_blank" rel="noopener">View CV &amp; contact details</a></div>
+    <div class="footer-links mb-3">
+      ${validSocials.map(s => `<a href="${s.link}" target="_blank" rel="noopener noreferrer" class="me-3"><i class="bi ${s.icon}" aria-hidden="true"></i> ${s.icon.includes('github') ? 'GitHub' : s.icon.includes('linkedin') ? 'LinkedIn' : 'Email'}</a>`).join('')}
+      <a href="#hero">Back to top ↑</a>
     </div>
     <p class="mb-0">&copy; ${copyright}</p>
   `;
@@ -1241,6 +1269,10 @@ function initAnimatedCounters() {
         const start = performance.now();
 
         function update(now) {
+          if (prefersReducedMotion || document.body.classList.contains('motion-paused')) {
+            el.textContent = target + suffix;
+            return;
+          }
           const elapsed = now - start;
           const progress = Math.min(elapsed / duration, 1);
           // Ease out cubic

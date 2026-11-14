@@ -24,6 +24,10 @@ const motionButton = document.querySelector('#motionToggle');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 function setMotionPaused(paused) {
   document.body.classList.toggle('motion-paused', paused);
+  document.querySelectorAll('.video-preview video, #aboutAvatar video').forEach(video => {
+    if (paused) video.pause();
+    else if (video.closest('#aboutAvatar')) video.play().catch(() => {});
+  });
   if (motionButton) {
     motionButton.disabled = reducedMotion.matches;
     motionButton.title = reducedMotion.matches ? 'Reduced motion is enabled in your system settings.' : 'Pause decorative animation';
